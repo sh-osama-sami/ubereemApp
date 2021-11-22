@@ -117,6 +117,7 @@ public class Driver implements subscriber {
     		if(ride[i].favRide==true)
     		{
     			System.out.println(ride[i]);
+    			//bosbos
     		}
     			
     	}
