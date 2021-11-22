@@ -16,11 +16,11 @@ public class Driver implements subscriber {
      * 
      */
     public String ID;
-
+    public Offer rideoffer;
     /**
      * 
      */
-    public String license;
+    public License license;
 
     /**
      * 
@@ -30,8 +30,8 @@ public class Driver implements subscriber {
     /**
      * 
      */
-    public Ride favride[];
-
+    public Ride ride[];
+   // public Ride favride[];
     /**
      * 
      */
@@ -41,7 +41,8 @@ public class Driver implements subscriber {
      * 
      */
     public Account account;
-
+    public boolean verified=false;
+    //protected int driverCount=0;
 
 
 
@@ -57,9 +58,11 @@ public class Driver implements subscriber {
      * @param license 
      * @return
      */
-    public boolean register(Account account, String ID, String license) {
-        // TODO implement here
-        return true;
+    public void register(Account account, String ID, License license) {
+        this.account=account;
+        this.ID=ID;
+        this.license=license;
+        //return true;
     }
 
     /**
@@ -84,7 +87,10 @@ public class Driver implements subscriber {
      * @return
      */
     public void addFavouriteArea(Area favearea) {
-        // TODO implement here
+    	
+        //favearea.favArea=true;
+        favArea[favArea.length]=favearea;
+        //driverCount++;
      
     }
 
@@ -100,9 +106,30 @@ public class Driver implements subscriber {
      * @param source 
      * @return
      */
-    public Ride listFavRides(Area source) {
-        // TODO implement here
-        return null;
+    public void setFavRides(Ride r) {
+    			ride[ride.length]=r;
+    }
+    public void listFavRides( ) {
+    //	if()
+    	
+    	for(int i=0;i<ride.length;i++)
+    	{
+    		if(ride[i].favRide==true)
+    		{
+    			System.out.println(ride[i]);
+    		}
+    			
+    	}
+    	
+    	
+    	
+    }
+    public float suggestPrice(Float f) {
+    	rideoffer.price=f;
+    	return rideoffer.price;
+    }
+    public Offer suggestedOffer() {
+    	return rideoffer;
     }
 
     /**

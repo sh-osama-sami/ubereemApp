@@ -15,7 +15,8 @@ public class Rider implements subscriber {
     /**
      * 
      */
-    public Ride rideOffers[];
+   // public Ride rideOffers[];
+    public Offer rideoffer;
 
     /**
      * 
@@ -28,27 +29,13 @@ public class Rider implements subscriber {
      * @param account 
      * @return
      */
-    public boolean register(Account account) {
-        // TODO implement here
-        return true;
-    }
+    public void register(Account account) {
 
-    /**
-     * @param email 
-     * @return
-     */
-    public void addemail(String email) {
-        // TODO implement here
-       // return null;
+    	this.account=account;       
+    	
     }
-
-    /**
-     * @param ride 
-     * @return
-     */
     public void requestRide(Ride ride) {
-        // TODO implement here
-       // return null;
+       ride.requested=true;
     }
 
     /**

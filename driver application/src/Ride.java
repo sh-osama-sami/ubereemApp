@@ -15,23 +15,19 @@ public class Ride implements publisher {
     /**
      * 
      */
+    public subscriber [] subscribers;
+    public Offer[] rideoffer;
+    protected boolean favRide=false;
     protected Area source;
-
-    /**
-     * 
-     */
     protected Area dest;
 
     /**
      * 
      */
+   // protected Area dest;
     public float cost;
-
-    /**
-     * 
-     */
     public int rate;
-
+    protected boolean requested=false;
 
 
 
@@ -40,18 +36,19 @@ public class Ride implements publisher {
      * @param src 
      * @return
      */
-    public void setSource(Area src) {
+   
+    /*public void setSource(Area src) {
         // TODO implement here
-        
-    }
+        source=src;
+    }*/
 
     /**
      * @param dest 
      * @return
-     */
+     
     public void setDestination(Area dest) {
         // TODO implement here
-        
+        this.dest=dest;
     }
 
     /**
@@ -60,16 +57,13 @@ public class Ride implements publisher {
      */
     public void setRate(int r) {
         // TODO implement here
-       
+       rate=r;
     }
 
     /**
      * @return
      */
-    public void requestRide() {
-        // TODO implement here
-       
-    }
+   
 
     /**
      * @return
@@ -85,7 +79,7 @@ public class Ride implements publisher {
      */
     public void setCost(float c) {
         // TODO implement here
-       
+       cost=c;
     }
 
     /**
@@ -93,8 +87,15 @@ public class Ride implements publisher {
      */
     public float getCost() {
         // TODO implement here
-        return 0.0f;
+        return cost;
     }
+    public void setRideOffers(Driver[] d) {
+    	for(int i=0;i<subscribers.length;i++) {
+    		rideoffer[i]=d[i].suggestedOffer();
+    	}
+    }
+    
+   
 
     /**
      * @return

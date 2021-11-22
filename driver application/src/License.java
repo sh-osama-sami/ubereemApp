@@ -1,15 +1,25 @@
+import java.util.Date;
 
-import java.util.*;
-
-/**
- * 
- */
 public class License {
+public Date expirydate;
+String LicenseNumber;
 
-    /**
-     * Default constructor
-     */
-    public License() {
-    }
 
+public void setExpiryDate(Date d) {
+	expirydate=d;
+	
+}
+public void setLicenseNumber(String d) {
+	LicenseNumber=d;
+	
+}
+public Date getExpiryDate() {
+	return expirydate;
+	
+}
+public String getLicenseNumber() {
+	return LicenseNumber;
+	
+}
+	
 }

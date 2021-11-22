@@ -38,21 +38,21 @@ public class Account {
      * @param name
      */
     public void setUsername(String name) {
-        // TODO implement here
+        username=name;
     }
 
     /**
      * @param p
      */
     public void setPass(String p) {
-        // TODO implement here
+       password=p;
     }
 
     /**
      * @param e
      */
     public void setEmail(String e) {
-        // TODO implement here
+       email=e;
     }
 
 }

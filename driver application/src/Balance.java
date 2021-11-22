@@ -24,7 +24,7 @@ public class Balance {
      * @return
      */
     public void setBalance(float m) {
-        // TODO implement here
+        money=m;
        
     }
 
@@ -33,7 +33,7 @@ public class Balance {
      */
     public float getBalance() {
         // TODO implement here
-        return 0.0f;
+        return money;
     }
 
 }
