@@ -37,16 +37,22 @@ public class Admin {
       ;
     }
     
-    public void listPendingDrivers(Driver[] d)
+    public void addPendingDriver(Driver d)
     {
-    	for(int i=0;i<d.length;i++)
+    	driver[driver.length]=d;
+    	
+    }
+    public Driver[] listPendingDrivers()
+    {
+    	/*for(int i=0;i<driver.length;i++)
     	{
-    		if(d[i].verified==false)
+    		if(driver[i].verified==false)
     		{
-    			System.out.println(d[i]);
+    			System.out.println(driver[i]);
     		}
     			
-    	}
+    	}*/
+    	return driver;
     }
     
    

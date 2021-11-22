@@ -29,7 +29,10 @@ public class Ride implements publisher {
     public int rate;
     protected boolean requested=false;
 
-
+public Ride(String s ,String d){
+	source.areaName=s;
+	dest.areaName=d;
+}
 
 
     /**

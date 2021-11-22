@@ -11,7 +11,11 @@ public class Account {
      */
     public Account() {
     }
-
+    public Account(String s,String y ,String x) {
+    	username=s;
+    	phonenumber=y;
+    	password=x;
+    }
     /**
      * 
      */
