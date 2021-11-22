@@ -30,19 +30,21 @@ public class Driver implements subscriber {
     /**
      * 
      */
-    public Ride ride[];
-   // public Ride favride[];
+    public Ride ride[];//history
+    public Ride favride[]=new Ride[100];
     /**
      * 
      */
-    public Area favArea[];
+    public Area favArea[]=new Area[100];
 
     /**
      * 
      */
     public Account account;
     public boolean verified=false;
-    //protected int driverCount=0;
+    protected int areaCount=0;
+    protected int rideCount=0;
+
 
 
 
@@ -88,18 +90,18 @@ public class Driver implements subscriber {
      */
     public void addFavouriteArea(Area favearea) {
     	
-        //favearea.favArea=true;
-        favArea[favArea.length]=favearea;
-        //driverCount++;
+        favearea.favArea=true;
+        favArea[areaCount]=favearea;
+        areaCount++;
      
     }
 
     /**
      * @return
      */
-    public void update() {
-        // TODO implement here
-    
+    public void update(Ride r) {
+        System.out.println("the requested ride is favourit");
+        setFavRides(r);
     }
 
     /**
@@ -107,27 +109,28 @@ public class Driver implements subscriber {
      * @return
      */
     public void setFavRides(Ride r) {
-    			ride[ride.length]=r;
+    	r.favRide=true;
+    	favride[rideCount]=r;
+    	rideCount++;
     }
     public void listFavRides( ) {
-    //	if()
+
     	
-    	for(int i=0;i<ride.length;i++)
+    	for(int i=0;i<rideCount;i++)
     	{
-    		if(ride[i].favRide==true)
-    		{
-    			System.out.println(ride[i]);
+    		
+    			System.out.println(favride[i]);
     			//bosbos
-    		}
+    		
     			
     	}
     	
     	
     	
     }
-    public float suggestPrice(Float f) {
+    public void suggestPrice(Float f) {
     	rideoffer.price=f;
-    	return rideoffer.price;
+    	
     }
     public Offer suggestedOffer() {
     	return rideoffer;

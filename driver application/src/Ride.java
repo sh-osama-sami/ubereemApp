@@ -16,7 +16,7 @@ public class Ride implements publisher {
      * 
      */
     public subscriber [] subscribers;
-    public Offer[] rideoffer;
+    public Offer[] rideoffer= new Offer[100];
     protected boolean favRide=false;
     protected Area source;
     protected Area dest;
@@ -28,7 +28,8 @@ public class Ride implements publisher {
     public float cost;
     public int rate;
     protected boolean requested=false;
-
+    public int offercount=0;
+    
 public Ride(String s ,String d){
 	source.areaName=s;
 	dest.areaName=d;
@@ -71,19 +72,23 @@ public Ride(String s ,String d){
     /**
      * @return
      */
-    public Area notification(Driver drvr) {
-    	Area lar=new Area();
+    public void notification(Driver drvr) {
+    	
     	for (Area a:drvr.favArea)
     	{
     		if (this.source.getAreaName().equals(a.getAreaName()))
     		{
-    			drvr.update();
-    			 lar=a;
+    			drvr.update(this);
+    			
     			break;
     		}
     	}
     
-        return lar;
+       
+    }
+public void notification(Rider rider) {
+    	rider.update(this);
+	
     }
 
     /**
@@ -102,10 +107,11 @@ public Ride(String s ,String d){
         // TODO implement here
         return cost;
     }
-    public void setRideOffers(Driver[] d) {
-    	for(int i=0;i<subscribers.length;i++) {
-    		rideoffer[i]=d[i].suggestedOffer();
-    	}
+    public void setRideOffers(Offer o) {
+    	
+    		rideoffer[offercount]=o;
+    		offercount++;
+    	
     }
     
    

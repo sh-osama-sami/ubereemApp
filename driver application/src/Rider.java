@@ -16,7 +16,7 @@ public class Rider implements subscriber {
      * 
      */
    // public Ride rideOffers[];
-    public Offer rideoffer;
+   // public Offer rideoffer;
 
     /**
      * 
@@ -41,9 +41,15 @@ public class Rider implements subscriber {
     /**
      * @return
      */
-    public Ride ListRideOffers() {
-        // TODO implement here
-        return null;
+    public void ListRideOffers(Ride r) {
+    	for(int i=0;i<r.offercount;i++)
+    	{
+    		
+    			System.out.println(r.rideoffer[i]);
+    			//bosbos
+    		
+    			
+    	}
     }
 
     /**
@@ -65,9 +71,8 @@ public class Rider implements subscriber {
     /**
      * @return
      */
-    public void update() {
-        // TODO implement here
-       // return null;
+    public void update(Ride r) {
+    	 System.out.println("a new offer has been added");
     }
 
     /**

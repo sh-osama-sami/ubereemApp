@@ -15,6 +15,9 @@ public License(String ln,String ed) throws ParseException {
 	LicenseNumber=ln;
 	
 }
+public License(String ln) {
+	LicenseNumber=ln;
+}
 public void setExpiryDate(Date d) {
 	expirydate=d;
 	

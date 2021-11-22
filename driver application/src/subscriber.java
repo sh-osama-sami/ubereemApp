@@ -11,6 +11,6 @@ public interface subscriber {
     /**
      * @return
      */
-    public abstract void update();
+    public abstract void update(Ride r);
 
 }

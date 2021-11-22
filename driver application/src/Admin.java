@@ -1,4 +1,6 @@
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -24,17 +26,24 @@ public class Admin {
     /**
      * @param d 
      * @return
+     * @throws ParseException 
      */
-    public void verifyDriver(Driver d) {
+    public boolean verifyDriver(Driver d) throws ParseException {
     	
-    	 
-    	 Date limit = new Date(2020) ;
+    	SimpleDateFormat s= new SimpleDateFormat("dd/MM/yyyy");
+    	Date limit = new Date();
+    	limit =s.parse("01/01/2020");
     	
-    	if(d.license.getExpiryDate().before(limit))
+    	if(d.license.getExpiryDate().after(limit))
     	{
+    		
     		d.verified=true;
+    	System.out.println("verified");
+    	return true;
     	}
-      ;
+    	else System.out.println("access denied");
+    	return false;
+      
     }
     
     public void addPendingDriver(Driver d)
