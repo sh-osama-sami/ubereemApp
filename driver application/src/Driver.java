@@ -1,4 +1,5 @@
 
+import java.text.ParseException;
 import java.util.*;
 
 /**
@@ -41,6 +42,7 @@ public class Driver implements subscriber {
      * 
      */
     public Account account;
+    public Driver drvr;
     public boolean verified=false;
     protected int areaCount=0;
     protected int rideCount=0;
@@ -133,10 +135,78 @@ public class Driver implements subscriber {
     public Offer suggestedOffer() {
     	return rideoffer;
     }
+    public Driver getDriverObject()
+    {
+    	return drvr;
+    }
+    public void setDriverObject(Driver d1)
+    {
+    	drvr=d1;
+    }
 
     /**
      * @return
+     * @throws ParseException 
      */
+    public static void main(String[] args) throws ParseException {
+    	Scanner sc=new Scanner(System.in);
+    	System.out.println("enter your username-mobile number-password ");
+    	String username=sc.next();
+    	String mobile=sc.next();
+    	String password=sc.next();
+    	System.out.println("do you want to enter your email? 1-yes 2-no");
+    	String choice=sc.next();
+    	String email;
+    	Account a = new Account(username,mobile,password) ;
+    	if(choice.equals("1")) {
+    		email=sc.next();
+    		a.setEmail(email);
+    	}
+    	
+    	Ride ride ;
+    	Driver d=new Driver();
+    	Driver d76=new Driver();
+    	d76.setDriverObject(d);
+    	//Rider r=new Rider();
+    	
+/////////Driver
+    	 
+    	   System.out.println("enter your licensenumber and expiry date (dd/MM/yyyy) and ID");
+    	   String License=sc.next();
+    	   String ed=sc.next();
+    	   String Id=sc.next();
+    	   License l= new License(License,ed);
+  
+    	   d.register(a, Id, l);
+    	   
+    	  /* if( ad.verifyDriver(d)==false) {
+    		   System.out.println("you cant access the app unless you are verified");
+    		   break;
+    	   }*/
+    	  
+    	   
+    	   System.out.println("add fav area? 1-yea 2- nay");
+    	   choice=sc.next();
+    	   if(choice.equals("1")) {
+    		   String fave = sc.next();
+    		   Area area = new Area();
+    		   area.setAreaName(fave);
+    		  d.addFavouriteArea(area);
+    	   }
+    	   System.out.println("list all rides with a fav source area? 1-yea 2- nay");
+    	   choice=sc.next();
+    	   if(choice.equals("1")) {
+    		   d.listFavRides();
+    	   }
+    	   System.out.println("suggest a price? 1-yea 2- nay");
+    	   choice=sc.next();
+    	   if(choice.equals("1")) {
+    		   float offer = sc.nextFloat();
+    		   d.suggestPrice(offer);
+    	   }
+    	   
+       }
+	
    
 
 }
