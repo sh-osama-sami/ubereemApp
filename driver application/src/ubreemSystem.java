@@ -101,7 +101,7 @@ public class ubreemSystem {
         		   String des=sc.next();
         		   ride =new Ride(src,des);
         		   r.requestRide(ride);
-        		   ride.notification(d);
+        		   ride.notification(d,ride);
         	   }
         	   
            }

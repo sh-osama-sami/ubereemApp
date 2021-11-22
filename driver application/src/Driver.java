@@ -21,7 +21,7 @@ public class Driver implements subscriber {
     /**
      * 
      */
-    public License license;
+    public License license=new License();
 
     /**
      * 
@@ -141,6 +141,7 @@ public class Driver implements subscriber {
     }
     public void setDriverObject(Driver d1)
     {
+    	drvr=new Driver();
     	drvr=d1;
     }
 
@@ -149,6 +150,7 @@ public class Driver implements subscriber {
      * @throws ParseException 
      */
     public static void main(String[] args) throws ParseException {
+    	Admin admoon = new Admin();
     	Scanner sc=new Scanner(System.in);
     	System.out.println("enter your username-mobile number-password ");
     	String username=sc.next();
@@ -165,6 +167,7 @@ public class Driver implements subscriber {
     	
     	Ride ride ;
     	Driver d=new Driver();
+    	
     	Driver d76=new Driver();
     	d76.setDriverObject(d);
     	//Rider r=new Rider();
@@ -178,7 +181,9 @@ public class Driver implements subscriber {
     	   License l= new License(License,ed);
   
     	   d.register(a, Id, l);
-    	   
+    	   admoon.setDriver(d);
+    	   admoon.addPendingDriver(d);
+    	   admoon.main(args);
     	  /* if( ad.verifyDriver(d)==false) {
     		   System.out.println("you cant access the app unless you are verified");
     		   break;
@@ -193,6 +198,9 @@ public class Driver implements subscriber {
     		   area.setAreaName(fave);
     		  d.addFavouriteArea(area);
     	   }
+    	   Rider r=new Rider();
+    	   r.setDriver(d);
+    	   r.main(args);
     	   System.out.println("list all rides with a fav source area? 1-yea 2- nay");
     	   choice=sc.next();
     	   if(choice.equals("1")) {

@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+//import sun.tools.tree.ThisExpression;
+
 /**
  * 
  */
@@ -19,16 +21,17 @@ public class Admin {
     /**
      * 
      */
-    public Driver driver[];
+    public static Driver driver[]=new Driver[100];
+    public static Driver dr=new Driver();
     //driver.(type[]) collection.toArray(new type[collection.size()])
     //public boolean check;
-
+    public static int dcount=0;
     /**
      * @param d 
      * @return
      * @throws ParseException 
      */
-    public boolean verifyDriver(Driver d) throws ParseException {
+    public static boolean verifyDriver(Driver d) throws ParseException {
     	
     	SimpleDateFormat s= new SimpleDateFormat("dd/MM/yyyy");
     	Date limit = new Date();
@@ -48,14 +51,15 @@ public class Admin {
     
     public void addPendingDriver(Driver d)
     {
-    	driver[driver.length]=d;
+    	driver[dcount]=d;
+    	dcount++;
     	
     }
-    public void listPendingDrivers()
+    public static void listPendingDrivers()
     {
-    	for(int i=0;i<driver.length;i++)
+    	for(int i=0;i<dcount;i++)
     	{
-    			System.out.println(i+") driver number");
+    			System.out.println(i+1+") driver number");
         		System.out.println("Username:"+driver[i].account.username);
         		System.out.println("mobile phone:"+driver[i].account.phonenumber);
         		if (driver[i].account.email!=null) {
@@ -78,8 +82,16 @@ public class Admin {
     	}*/
     	//return driver;
     }
+    public static void setDriver(Driver d) {
+    	dr=d;
+    }
     
-   public static void main(String[] args) {
+   public static void main(String[] args) throws ParseException {
+	//Admin admoon = new Admin();
+System.out.println("list pending?");
+	
+	listPendingDrivers();
+	verifyDriver(dr);
 	
 }
 

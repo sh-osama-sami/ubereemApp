@@ -72,13 +72,14 @@ public Ride(String s ,String d){
     /**
      * @return
      */
-    public void notification(Driver drvr) {
-    	
+    public void notification(Driver drvr,Ride r) {
+    
     	for (Area a:drvr.favArea)
     	{
+    		a=new Area();
     		if (this.source.getAreaName().equals(a.getAreaName()))
     		{
-    			drvr.update(this);
+    			drvr.update(r);
     			
     			break;
     		}
