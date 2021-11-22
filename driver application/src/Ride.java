@@ -71,9 +71,19 @@ public Ride(String s ,String d){
     /**
      * @return
      */
-    public boolean notification() {
-        // TODO implement here
-        return true;
+    public Area notification(Driver drvr) {
+    	Area lar=new Area();
+    	for (Area a:drvr.favArea)
+    	{
+    		if (this.source.getAreaName().equals(a.getAreaName()))
+    		{
+    			drvr.update();
+    			 lar=a;
+    			break;
+    		}
+    	}
+    
+        return lar;
     }
 
     /**

@@ -17,6 +17,6 @@ public interface publisher {
     /**
      * @return
      */
-    public abstract boolean notification();
+    public abstract Area notification(Driver drvr);
 
 }
