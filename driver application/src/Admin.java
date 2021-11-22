@@ -51,17 +51,32 @@ public class Admin {
     	driver[driver.length]=d;
     	
     }
-    public Driver[] listPendingDrivers()
+    public void listPendingDrivers()
     {
-    	/*for(int i=0;i<driver.length;i++)
+    	for(int i=0;i<driver.length;i++)
     	{
-    		if(driver[i].verified==false)
-    		{
-    			System.out.println(driver[i]);
-    		}
-    			
+    			System.out.println(i+") driver number");
+        		System.out.println("Username:"+driver[i].account.username);
+        		System.out.println("mobile phone:"+driver[i].account.phonenumber);
+        		if (driver[i].account.email!=null) {
+        		System.out.println("email:"+driver[i].account.email);}
+        		System.out.println("license number:"+driver[i].license.getLicenseNumber());
+        		System.out.println("license expiry date:"+driver[i].license.getExpiryDate().toString());
+        		System.out.println("national ID:"+driver[i].ID);
+        		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");			
+    	}
+    	/*for (Driver d:driver)
+    	{
+    		System.out.println("Username:"+d.account.username);
+    		System.out.println("mobile phone:"+d.account.phonenumber);
+    		if (d.account.email!=null) {
+    		System.out.println("email:"+d.account.email);}
+    		System.out.println("license number:"+d.license.getLicenseNumber());
+    		System.out.println("license expiry date:"+d.license.getExpiryDate().toString());
+    		System.out.println("national ID:"+d.ID);
+    		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
     	}*/
-    	return driver;
+    	//return driver;
     }
     
    

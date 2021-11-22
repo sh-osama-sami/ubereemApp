@@ -31,7 +31,7 @@ public class ubreemSystem {
     	do {
     		
     		Scanner sc=new Scanner(System.in);
-        	System.out.println("enter your username-mobilenumber-password ");
+        	System.out.println("enter your username-mobile number-password ");
         	String username=sc.next();
         	String mobile=sc.next();
         	String password=sc.next();

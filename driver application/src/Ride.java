@@ -18,8 +18,8 @@ public class Ride implements publisher {
     public subscriber [] subscribers;
     public Offer[] rideoffer= new Offer[100];
     protected boolean favRide=false;
-    protected Area source;
-    protected Area dest;
+    protected Area source=new Area();
+    protected Area dest=new Area();
 
     /**
      * 

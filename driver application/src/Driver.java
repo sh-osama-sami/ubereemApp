@@ -119,10 +119,8 @@ public class Driver implements subscriber {
     	for(int i=0;i<rideCount;i++)
     	{
     		
-    			System.out.println(favride[i]);
-    			//bosbos
-    		
-    			
+    			System.out.println(favride[i].source.getAreaName());
+    			System.out.println(favride[i].dest.getAreaName());    			
     	}
     	
     	
