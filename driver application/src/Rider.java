@@ -6,30 +6,16 @@ import java.util.*;
  */
 public class Rider implements subscriber {
 
-    /**
-     * Default constructor
-     */
+    
     public Rider() {
     }
 
-    /**
-     * 
-     */
-   // public Ride ride=new Ride();
-   // public Ride rideOffers[];
-   // public Offer rideoffer;
-
-    /**
-     * 
-     */
+   
     public static Account account;
     public static Driver dddd=new Driver();
 
 
-    /**
-     * @param account 
-     * @return
-     */
+   
     public static void register(Account account1) {
 
     	account=account1;       
@@ -39,47 +25,32 @@ public class Rider implements subscriber {
        ride.requested=true;
     }
 
-    /**
-     * @return
-     */
+   
     public void ListRideOffers(Ride r) {
     	for(int i=0;i<r.offercount;i++)
     	{
     		
     			System.out.println(r.rideoffer[i]);
-    			//bosbos
+    			
     		
     			
     	}
     }
 
-    /**
-     * @param driver 
-     * @return
-     */
     public void viewDriverDetails(Driver driver) {
-        // TODO implement here
-       // return null;
+       
     }
 
-    /**
-     * @param ride
-     */
+    
     public void rateRide(Ride ride) {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
     public void update(Ride r) {
     	 System.out.println("a new offer has been added");
     }
 
-    /**
-     * @param rideoffer 
-     * @return
-     */
+   
     public boolean acceptPrice(Ride rideoffer) {
         // TODO implement here
         return true;
@@ -88,9 +59,7 @@ public class Rider implements subscriber {
     	dddd=d;
     }
 
-    /**
-     * @return
-     */
+   
   public static void main(String[] args) {
 		System.out.println("RIDER");
 	  Driver drivr=new Driver();
@@ -109,8 +78,7 @@ public class Rider implements subscriber {
   	}
   	
   	Ride ride ;
-  	//Driver d=new Driver();
-  //	Rider r=new Rider();
+  
 	   register(a);
 	   System.out.println("do you want to request a ride 1-yes 2=no");
 	   choice=sc.next();
@@ -128,7 +96,7 @@ public class Rider implements subscriber {
 		   
 		   dddd.setDriverObject(dddd);
 		   }
-		 //  dddd.listFavRides();
+		
 }
 
 }

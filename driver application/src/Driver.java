@@ -2,45 +2,29 @@
 import java.text.ParseException;
 import java.util.*;
 
-/**
- * 
- */
+
 public class Driver implements subscriber {
 
-    /**
-     * Default constructor
-     */
+    
     public Driver() {
     }
 
-    /**
-     * 
-     */
+   
     public String ID;
     public Offer rideoffer;
-    /**
-     * 
-     */
+  
     public License license=new License();
 
-    /**
-     * 
-     */
+   
     public Balance balance;
 
-    /**
-     * 
-     */
+   
     public Ride ride[];//history
     public Ride favride[]=new Ride[100];
-    /**
-     * 
-     */
+   
     public Area favArea[]=new Area[100];
 
-    /**
-     * 
-     */
+   
     public Account account;
     public static Driver drvr=new Driver();
     public boolean verified=false;
@@ -56,12 +40,7 @@ public class Driver implements subscriber {
 
 
 
-    /**
-     * @param account 
-     * @param ID 
-     * @param license 
-     * @return
-     */
+   
     public void register(Account account, String ID, License license) {
         this.account=account;
         this.ID=ID;
@@ -69,27 +48,19 @@ public class Driver implements subscriber {
         //return true;
     }
 
-    /**
-     * @return
-     */
+   
     public boolean endRide() {
         // TODO implement here
         return true;
     }
 
-    /**
-     * @param ride 
-     * @return
-     */
+   
     public void addRideToHistory(Ride ride) {
         // TODO implement here
      
     }
 
-    /**
-     * @param favearea 
-     * @return
-     */
+   
     public void addFavouriteArea(Area favearea) {
     	
         favearea.favArea=true;
@@ -98,19 +69,14 @@ public class Driver implements subscriber {
      
     }
 
-    /**
-     * @return
-     */
+   
     public void update(Ride r) {
         System.out.println("the requested ride is favourit");
         ride22=r;
         setFavRides(ride22);
     }
 
-    /**
-     * @param source 
-     * @return
-     */
+    
     public boolean isFavRide() {
     	for(int i=0;i<areaCount;i++) {
     		if(ride22.source.getAreaName().equals(favArea[i].getAreaName())  ) {
@@ -161,10 +127,7 @@ public class Driver implements subscriber {
     	ride22=d1;
     }
 
-    /**
-     * @return
-     * @throws ParseException 
-     */
+   
     public static void main(String[] args) throws ParseException {
     	while(true) {
     		System.out.println("DRIVER");
@@ -184,13 +147,7 @@ public class Driver implements subscriber {
     	}
     	
     	Ride ride ;
-    	//Driver d=new Driver();
-    	
-    	//Driver d76=new Driver();
-    	//d76.setDriverObject(d);
-    	//Rider r=new Rider();
-    	
-/////////Driver
+    
     	 
     	   System.out.println("enter your licensenumber and expiry date (dd/MM/yyyy) and ID");
     	   String License=sc.next();
@@ -203,10 +160,7 @@ public class Driver implements subscriber {
     	   admoon.addPendingDriver(drvr);
     	   
     	   admoon.main(args);
-    	  /* if( ad.verifyDriver(d)==false) {
-    		   System.out.println("you cant access the app unless you are verified");
-    		   break;
-    	   }*/
+    	 
     	 
     	   if(drvr.verified==false) {System.out.println("you need to get verified");break;}
     	   else

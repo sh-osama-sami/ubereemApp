@@ -5,32 +5,19 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-//import sun.tools.tree.ThisExpression;
 
-/**
- * 
- */
 public class Admin {
 
-    /**
-     * Default constructor
-     */
+    
     public Admin() {
     }
 
-    /**
-     * 
-     */
+    
     public static Driver driver[]=new Driver[100];
     public static Driver dr=new Driver();
-    //driver.(type[]) collection.toArray(new type[collection.size()])
-    //public boolean check;
+    
     public static int dcount=0;
-    /**
-     * @param d 
-     * @return
-     * @throws ParseException 
-     */
+    
     public static boolean verifyDriver(Driver d) throws ParseException {
     	
     	SimpleDateFormat s= new SimpleDateFormat("dd/MM/yyyy");
@@ -80,7 +67,7 @@ public class Admin {
     
    public static void main(String[] args) throws ParseException {
 		System.out.println("ADMIN");
-	//Admin admoon = new Admin();
+	
 	   Scanner sc=new Scanner(System.in);
 	   System.out.println("do you want to verify a new driver 1-yea 2-no");
 	   String ans = sc.next();
@@ -95,7 +82,7 @@ public class Admin {
 	   }
 	
 
-//System.out.println("list pending?");
+
 	
 	
 	
