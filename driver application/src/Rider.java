@@ -15,26 +15,27 @@ public class Rider implements subscriber {
     /**
      * 
      */
+   // public Ride ride=new Ride();
    // public Ride rideOffers[];
    // public Offer rideoffer;
 
     /**
      * 
      */
-    public Account account;
-
+    public static Account account;
+    public static Driver dddd=new Driver();
 
 
     /**
      * @param account 
      * @return
      */
-    public void register(Account account) {
+    public static void register(Account account1) {
 
-    	this.account=account;       
+    	account=account1;       
     	
     }
-    public void requestRide(Ride ride) {
+    public static void requestRide(Ride ride) {
        ride.requested=true;
     }
 
@@ -83,11 +84,15 @@ public class Rider implements subscriber {
         // TODO implement here
         return true;
     }
+    public static void setDriver(Driver d) {
+    	dddd=d;
+    }
 
     /**
      * @return
      */
   public static void main(String[] args) {
+		System.out.println("RIDER");
 	  Driver drivr=new Driver();
 	  Scanner sc=new Scanner(System.in);
   	System.out.println("enter your username-mobile number-password ");
@@ -105,17 +110,20 @@ public class Rider implements subscriber {
   	
   	Ride ride ;
   	//Driver d=new Driver();
-  	Rider r=new Rider();
-	   r.register(a);
+  //	Rider r=new Rider();
+	   register(a);
 	   System.out.println("do you want to request a ride 1-yes 2=no");
 	   choice=sc.next();
-	   //if(choice.equals("1")) {
+	   if(choice.equals("1")) {
 		   System.out.println("enter source and destination");
 		   String src=sc.next();
 		   String des=sc.next();
 		   ride =new Ride(src,des);
-		   r.requestRide(ride);
-		   ride.notification(drivr.getDriverObject());
+		   requestRide(ride);
+		   ride.notification(dddd,ride);
+		   dddd.setDriverObject(dddd);
+		   }
+		 //  dddd.listFavRides();
 }
 
 }

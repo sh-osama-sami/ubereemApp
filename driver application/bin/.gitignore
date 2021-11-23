@@ -1,1 +1,17 @@
+<<<<<<< Updated upstream
 /Offer.class
+=======
+/Account.class
+/Admin.class
+/Area.class
+/Balance.class
+/Calculation.class
+/Driver.class
+/License.class
+/Ride.class
+/Rider.class
+/context.class
+/publisher.class
+/subscriber.class
+/ubreemSystem.class
+>>>>>>> Stashed changes

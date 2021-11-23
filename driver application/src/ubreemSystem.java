@@ -24,8 +24,10 @@ public class ubreemSystem {
      * @return
      * @throws ParseException 
      */
+<<<<<<< Updated upstream
     public static void main(String[] args) throws ParseException {
     	
+<<<<<<< HEAD
     	Admin ad=new Admin(); 
     	
     	do {
@@ -95,14 +97,14 @@ public class ubreemSystem {
         	   r.register(a);
         	   System.out.println("do you want to request a ride 1-yes 2=no");
         	   choice=sc.next();
-        	   if(choice.equals("1")) {
+        	   //if(choice.equals("1")) {
         		   System.out.println("enter source and destination");
         		   String src=sc.next();
         		   String des=sc.next();
         		   ride =new Ride(src,des);
         		   r.requestRide(ride);
         		   ride.notification(d);
-        	   }
+        	   //}
         	   
            }
            else if(ans.equals("3")) {
@@ -112,8 +114,17 @@ public class ubreemSystem {
     		
     	}while(true);
     	
+=======
+    
+>>>>>>> 7a490184da42be31e85c866d20e93750cb5a1ca0
     
     }
+=======
+    public static void main(String[] args) {
+        // TODO implement here
+       // return null;  
+    	}
+>>>>>>> Stashed changes
 
     /**
      * @return
