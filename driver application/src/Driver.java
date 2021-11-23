@@ -111,6 +111,16 @@ public class Driver implements subscriber {
      * @param source 
      * @return
      */
+    public boolean isFavRide() {
+    	for(int i=0;i<areaCount;i++) {
+    		if(ride22.source.getAreaName().equals(favArea[i].getAreaName())  ) {
+    			ride22.favRide=true;
+    			break;
+    		}
+    		
+    	}
+    	return ride22.favRide;
+    }
     public void setFavRides(Ride r) {
     	r.favRide=true;
     	favride[rideCount]=ride22;
