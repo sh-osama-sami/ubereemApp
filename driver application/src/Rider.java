@@ -92,6 +92,7 @@ public class Rider implements subscriber {
      * @return
      */
   public static void main(String[] args) {
+		System.out.println("RIDER");
 	  Driver drivr=new Driver();
 	  Scanner sc=new Scanner(System.in);
   	System.out.println("enter your username-mobile number-password ");
@@ -113,14 +114,16 @@ public class Rider implements subscriber {
 	   register(a);
 	   System.out.println("do you want to request a ride 1-yes 2=no");
 	   choice=sc.next();
-	   //if(choice.equals("1")) {
+	   if(choice.equals("1")) {
 		   System.out.println("enter source and destination");
 		   String src=sc.next();
 		   String des=sc.next();
 		   ride =new Ride(src,des);
 		   requestRide(ride);
 		   ride.notification(dddd,ride);
-		   dddd.listFavRides();
+		   dddd.setDriverObject(dddd);
+		   }
+		 //  dddd.listFavRides();
 }
 
 }

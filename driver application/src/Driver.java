@@ -42,7 +42,7 @@ public class Driver implements subscriber {
      * 
      */
     public Account account;
-    public Driver drvr;
+    public static Driver drvr=new Driver();
     public boolean verified=false;
     protected int areaCount=0;
     protected int rideCount=0;
@@ -139,9 +139,9 @@ public class Driver implements subscriber {
     {
     	return drvr;
     }
-    public void setDriverObject(Driver d1)
+    public static void setDriverObject(Driver d1)
     {
-    	drvr=new Driver();
+    	
     	drvr=d1;
     }
 
@@ -150,6 +150,8 @@ public class Driver implements subscriber {
      * @throws ParseException 
      */
     public static void main(String[] args) throws ParseException {
+    	while(true) {
+    		System.out.println("DRIVER");
     	Admin admoon = new Admin();
     	Scanner sc=new Scanner(System.in);
     	System.out.println("enter your username-mobile number-password ");
@@ -166,10 +168,10 @@ public class Driver implements subscriber {
     	}
     	
     	Ride ride ;
-    	Driver d=new Driver();
+    	//Driver d=new Driver();
     	
-    	Driver d76=new Driver();
-    	d76.setDriverObject(d);
+    	//Driver d76=new Driver();
+    	//d76.setDriverObject(d);
     	//Rider r=new Rider();
     	
 /////////Driver
@@ -180,39 +182,43 @@ public class Driver implements subscriber {
     	   String Id=sc.next();
     	   License l= new License(License,ed);
   
-    	   d.register(a, Id, l);
-    	   admoon.setDriver(d);
-    	   admoon.addPendingDriver(d);
+    	   drvr.register(a, Id, l);
+    	   admoon.setDriver(drvr);
+    	   admoon.addPendingDriver(drvr);
+    	   
     	   admoon.main(args);
     	  /* if( ad.verifyDriver(d)==false) {
     		   System.out.println("you cant access the app unless you are verified");
     		   break;
     	   }*/
-    	  
-    	   
+    	 
+    	   if(drvr.verified==false) {System.out.println("you need to get verified");break;}
+    	   else
+    	   {
     	   System.out.println("add fav area? 1-yea 2- nay");
     	   choice=sc.next();
     	   if(choice.equals("1")) {
     		   String fave = sc.next();
     		   Area area = new Area();
     		   area.setAreaName(fave);
-    		  d.addFavouriteArea(area);
+    		   drvr.addFavouriteArea(area);
     	   }
     	   Rider r=new Rider();
-    	   r.setDriver(d);
+    	   r.setDriver(drvr);
     	   r.main(args);
     	   System.out.println("list all rides with a fav source area? 1-yea 2- nay");
     	   choice=sc.next();
     	   if(choice.equals("1")) {
-    		   d.listFavRides();
+    		   drvr.listFavRides();
     	   }
     	   System.out.println("suggest a price? 1-yea 2- nay");
     	   choice=sc.next();
     	   if(choice.equals("1")) {
     		   float offer = sc.nextFloat();
-    		   d.suggestPrice(offer);
+    		   drvr.suggestPrice(offer);
     	   }
-    	   
+    	} 
+    	}
        }
 	
    

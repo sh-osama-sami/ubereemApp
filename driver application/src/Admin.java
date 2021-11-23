@@ -58,40 +58,47 @@ public class Admin {
     public static void listPendingDrivers()
     {
     	for(int i=0;i<dcount;i++)
-    	{
-    			System.out.println(i+1+") driver number");
-        		System.out.println("Username:"+driver[i].account.username);
-        		System.out.println("mobile phone:"+driver[i].account.phonenumber);
-        		if (driver[i].account.email!=null) {
-        		System.out.println("email:"+driver[i].account.email);}
-        		System.out.println("license number:"+driver[i].license.getLicenseNumber());
-        		System.out.println("license expiry date:"+driver[i].license.getExpiryDate().toString());
-        		System.out.println("national ID:"+driver[i].ID);
-        		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");			
+    	{if(driver[i].verified==false) {
+    		System.out.println(i+1+") driver number");
+    		System.out.println("Username:"+driver[i].account.username);
+    		System.out.println("mobile phone:"+driver[i].account.phonenumber);
+    		if (driver[i].account.email!=null) {
+    		System.out.println("email:"+driver[i].account.email);}
+    		System.out.println("license number:"+driver[i].license.getLicenseNumber());
+    		System.out.println("license expiry date:"+driver[i].license.getExpiryDate().toString());
+    		System.out.println("national ID:"+driver[i].ID);
+    		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");	
+    		
     	}
-    	/*for (Driver d:driver)
-    	{
-    		System.out.println("Username:"+d.account.username);
-    		System.out.println("mobile phone:"+d.account.phonenumber);
-    		if (d.account.email!=null) {
-    		System.out.println("email:"+d.account.email);}
-    		System.out.println("license number:"+d.license.getLicenseNumber());
-    		System.out.println("license expiry date:"+d.license.getExpiryDate().toString());
-    		System.out.println("national ID:"+d.ID);
-    		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
-    	}*/
-    	//return driver;
+    					
+    	}
+    
     }
     public static void setDriver(Driver d) {
     	dr=d;
     }
     
    public static void main(String[] args) throws ParseException {
+		System.out.println("ADMIN");
 	//Admin admoon = new Admin();
-System.out.println("list pending?");
+	   Scanner sc=new Scanner(System.in);
+	   System.out.println("do you want to verify a new driver 1-yea 2-no");
+	   String ans = sc.next();
+	   if(ans.equals("1")) {
+		   verifyDriver(dr);
+		  dr.setDriverObject(dr);
+	   }
+	   System.out.println("do you want to list pending drivers 1-yea 2-no");
+	   ans = sc.next();
+	   if(ans.equals("1")) {
+		   listPendingDrivers();
+	   }
 	
-	listPendingDrivers();
-	verifyDriver(dr);
+
+//System.out.println("list pending?");
+	
+	
+	
 	
 }
 
