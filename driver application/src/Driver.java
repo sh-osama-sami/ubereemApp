@@ -46,7 +46,7 @@ public class Driver implements subscriber {
     public boolean verified=false;
     protected int areaCount=0;
     protected int rideCount=0;
-
+    public static Ride ride22= new Ride();
 
 
 
@@ -103,7 +103,8 @@ public class Driver implements subscriber {
      */
     public void update(Ride r) {
         System.out.println("the requested ride is favourit");
-        setFavRides(r);
+        ride22=r;
+        setFavRides(ride22);
     }
 
     /**
@@ -112,7 +113,7 @@ public class Driver implements subscriber {
      */
     public void setFavRides(Ride r) {
     	r.favRide=true;
-    	favride[rideCount]=r;
+    	favride[rideCount]=ride22;
     	rideCount++;
     }
     public void listFavRides( ) {
@@ -143,6 +144,11 @@ public class Driver implements subscriber {
     {
     	
     	drvr=d1;
+    }
+    public static void setRide(Ride d1)
+    {
+    	
+    	ride22=d1;
     }
 
     /**

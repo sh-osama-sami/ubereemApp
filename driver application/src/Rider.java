@@ -121,6 +121,8 @@ public class Rider implements subscriber {
 		   ride =new Ride(src,des);
 		   requestRide(ride);
 		   ride.notification(dddd,ride);
+		   dddd.setRide(ride);
+		   dddd.setFavRides(ride);
 		   dddd.setDriverObject(dddd);
 		   }
 		 //  dddd.listFavRides();
