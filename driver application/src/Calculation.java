@@ -6,7 +6,7 @@ public interface Calculation {
 
 
     
-    public void EST();
+    public void ETA();
 
     
     public void calcDistance();
