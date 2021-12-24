@@ -1,38 +1,61 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import java.util.*;
+
+/**
+ * 
+ */
 public class License {
-public Date expirydate;
-String LicenseNumber;
 
-public License() {
-	
-}
-public License(String ln,String ed) throws ParseException {
-	SimpleDateFormat s= new SimpleDateFormat("dd/MM/yyyy");
-	expirydate=s.parse(ed);
-	LicenseNumber=ln;
-	
-}
-public License(String ln) {
-	LicenseNumber=ln;
-}
-public void setExpiryDate(Date d) {
-	expirydate=d;
-	
-}
-public void setLicenseNumber(String d) {
-	LicenseNumber=d;
-	
-}
-public Date getExpiryDate() {
-	return expirydate;
-	
-}
-public String getLicenseNumber() {
-	return LicenseNumber;
-	
-}
-	
+    /**
+     * Default constructor
+     */
+    public License() {
+    }
+
+    /**
+     * 
+     */
+    public Date expirydate;
+
+    /**
+     * 
+     */
+    public String licenseNumber;
+
+
+
+    /**
+     * @param d 
+     * @return
+     */
+    public void setExpiryDate(Date d) {
+        // TODO implement here
+        
+    }
+
+    /**
+     * @param s 
+     * @return
+     */
+    public void setLicenseNumber(String s) {
+        // TODO implement here
+        
+    }
+
+    /**
+     * @return
+     */
+    public Date getExpiryDate() {
+        // TODO implement here
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    public String getLicenseNumber() {
+        // TODO implement here
+        return "";
+    }
+
 }

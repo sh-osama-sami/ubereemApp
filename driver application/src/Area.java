@@ -1,16 +1,46 @@
 
+import java.util.*;
+
+/**
+ * 
+ */
 public class Area {
- String areaName;
- boolean favArea=false;
-public void setAreaName(String s){
 
-	 areaName=s;
- }
-public String getAreaName() {
-	return areaName;
+    /**
+     * Default constructor
+     */
+    public Area() {
+    }
 
-	
-	 
- }
+    /**
+     * 
+     */
+    protected String areaName;
+
+    /**
+     * 
+     */
+    public boolean favArea;
+
+
+
+
+
+    /**
+     * @param s 
+     * @return
+     */
+    public void setAreaName(String s) {
+        // TODO implement here
+        
+    }
+
+    /**
+     * @return
+     */
+    public String getAreaName() {
+        // TODO implement here
+        return "";
+    }
 
 }

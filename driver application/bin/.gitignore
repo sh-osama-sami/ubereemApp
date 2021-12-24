@@ -1,17 +1,28 @@
-<<<<<<< Updated upstream
-/Offer.class
-=======
 /Account.class
 /Admin.class
+/AdminController.class
+/AdminView.class
 /Area.class
 /Balance.class
 /Calculation.class
 /Driver.class
+/DriverController.class
+/DriverView.class
+/GoogleAPI.class
 /License.class
+/Model.class
+/ModelType.class
+/Offer.class
 /Ride.class
+/RideController.class
+/RideOffer.class
 /Rider.class
+/RiderController.class
+/RiderView.class
+/View.class
 /context.class
+/controller.class
+/harvsineWay.class
 /publisher.class
 /subscriber.class
 /ubreemSystem.class
->>>>>>> Stashed changes

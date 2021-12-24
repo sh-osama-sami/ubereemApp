@@ -1,7 +1,46 @@
 
-public class Offer  {
-public Float price ;
-public boolean accepted;
-public void setPrice(Float p) {price =p;}
-public Float getPrice() {return price;}
+import java.util.*;
+
+/**
+ * 
+ */
+public class Offer {
+
+    /**
+     * Default constructor
+     */
+    public Offer() {
+    }
+
+    /**
+     * 
+     */
+    public Float price;
+
+    /**
+     * 
+     */
+    public boolean accepted;
+
+
+
+
+
+    /**
+     * @param price 
+     * @return
+     */
+    public void setPrice(Float price) {
+        // TODO implement here
+        
+    }
+
+    /**
+     * @return
+     */
+    public Float getPrice() {
+        // TODO implement here
+        return null;
+    }
+
 }

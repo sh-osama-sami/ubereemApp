@@ -1,78 +1,109 @@
 
 import java.util.*;
 
+/**
+ * 
+ */
 public class Ride implements publisher {
 
-    
+    /**
+     * Default constructor
+     */
     public Ride() {
     }
 
-    
- 
-    public Offer[] rideoffer= new Offer[100];
-    protected boolean favRide=false;
-    protected Area source=new Area();
-    protected Area dest=new Area();
+    /**
+     * 
+     */
+    protected Area source;
 
-    
-    public float cost;
+    /**
+     * 
+     */
+    protected Area dest;
+
+    /**
+     * 
+     */
     public int rate;
-    protected boolean requested=false;
-    public int offercount=0;
-    
-public Ride(String s ,String d){
-	source.areaName=s;
-	dest.areaName=d;
-}
+
+    /**
+     * 
+     */
+    public boolean requested;
+
+    /**
+     * 
+     */
+    public boolean favRide;
+
+    /**
+     * 
+     */
+    public float cost;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * @param Sting s 
+     * @param String d
+     */
+    public void Ride( String s,  String d) {
+        // TODO implement here
+    }
+
+    /**
+     * @param r 
+     * @return
+     */
     public void setRate(int r) {
         // TODO implement here
-       rate=r;
+        
     }
 
-    
-    public void notification(Driver drvr,Ride r) {
-    
-    	for (Area a:drvr.favArea)
-    	{
-    		a=new Area();
-    		if (this.source.getAreaName().equals(a.getAreaName()))
-    		{
-    			drvr.update(r);
-    			
-    			break;
-    		}
-    	}
-    
-       
-    }
-public void notification(Rider rider) {
-    	rider.update(this);
-	
-    }
-
-   
+    /**
+     * @param c 
+     * @return
+     */
     public void setCost(float c) {
         // TODO implement here
-       cost=c;
+       
     }
 
-   
+    /**
+     * @return
+     */
     public float getCost() {
         // TODO implement here
-        return cost;
+        return 0.0f;
     }
-    public void setRideOffers(Offer o) {
-    	
-    		rideoffer[offercount]=o;
-    		offercount++;
-    	
-    }
-    
-   
 
-   
-   
+    /**
+     * @param Driver d 
+     * @param Ride r 
+     * @return
+     */
+    public  void notification( Driver d,  Ride r) {
+	}
+
+    /**
+     * @param Rider r 
+     * @return
+     */
+    public void notification( Rider r) {
+        // TODO implement here
+       
+    }
 
 }
