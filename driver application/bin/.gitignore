@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-/Offer.class
-=======
 /Account.class
 /Admin.class
 /Area.class
@@ -8,10 +5,23 @@
 /Calculation.class
 /Driver.class
 /License.class
+/Offer.class
 /Ride.class
 /Rider.class
 /context.class
 /publisher.class
 /subscriber.class
 /ubreemSystem.class
->>>>>>> Stashed changes
+/ubereemApp/
+/ModelType.class
+/Model.class
+/Controller.class
+/DriverController.class
+/controller.class
+/RiderController.class
+/RideController.class
+/OfferController.class
+/view.class
+/driverView.class
+/riderView.class
+/adminView.class

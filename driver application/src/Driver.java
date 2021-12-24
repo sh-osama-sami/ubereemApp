@@ -14,11 +14,7 @@ public class Driver implements subscriber {
     public Offer rideoffer;
   
     public License license=new License();
-
-   
-    public Balance balance;
-
-   
+    public Balance balance;   
     public Ride ride[];//history
     public Ride favride[]=new Ride[100];
    
@@ -28,20 +24,8 @@ public class Driver implements subscriber {
     public Account account;
     public static Driver drvr=new Driver();
     public boolean verified=false;
-    protected int areaCount=0;
-    protected int rideCount=0;
-    public static Ride ride22= new Ride();
-
-
-
-
-
-
-
-
-
-   
-    public void register(Account account, String ID, License license) {
+    public static Ride ride22= new Ride();   
+  /*  public void register(Account account, String ID, License license) {
         this.account=account;
         this.ID=ID;
         this.license=license;
@@ -50,7 +34,6 @@ public class Driver implements subscriber {
 
    
     public boolean endRide() {
-        // TODO implement here
         return true;
     }
 
@@ -63,44 +46,44 @@ public class Driver implements subscriber {
    
     public void addFavouriteArea(Area favearea) {
     	
-        favearea.favArea=true;
+        /*favearea.favArea=true;
         favArea[areaCount]=favearea;
         areaCount++;
      
-    }
+    }*/
 
    
     public void update(Ride r) {
-        System.out.println("the requested ride is favourit");
+        System.out.println("the requested ride is favourite");
         ride22=r;
         setFavRides(ride22);
     }
 
     
     public boolean isFavRide() {
-    	for(int i=0;i<areaCount;i++) {
+    	/*for(int i=0;i<areaCount;i++) {
     		if(ride22.source.getAreaName().equals(favArea[i].getAreaName())  ) {
     			ride22.favRide=true;
     			break;
     		}
     		
-    	}
+    	}*/
     	return ride22.favRide;
     }
     public void setFavRides(Ride r) {
-    	r.favRide=true;
+    	/*r.favRide=true;
     	favride[rideCount]=ride22;
-    	rideCount++;
+    	rideCount++;*/
     }
     public void listFavRides( ) {
 
     	
-    	for(int i=0;i<rideCount;i++)
+    	/*for(int i=0;i<rideCount;i++)
     	{
     		
     			System.out.println(favride[i].source.getAreaName());
     			System.out.println(favride[i].dest.getAreaName());    			
-    	}
+    	}*/
     	
     	
     	
