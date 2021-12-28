@@ -42,7 +42,7 @@ public class Ride implements publisher {
      */
     public float cost;
 
-
+    public int id;
 
 
 

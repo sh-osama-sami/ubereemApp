@@ -26,7 +26,8 @@ public class ubreemSystem {
      */
     public static void main(String args[]) {
         // TODO implement here
-       
+    	Database db=new DatabaseSQL();
+    	((DatabaseSQL) db).connect();
     }
 
     /**

@@ -21,7 +21,7 @@ public class Offer {
      * 
      */
     public boolean accepted;
-
+    public int id;
 
 
 
