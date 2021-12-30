@@ -1,11 +1,21 @@
+package com.example.demo;
+
 
 import java.sql.ResultSet;
 import java.util.*;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  * 
  */
-public class RiderController implements controller, subscriber {
+@RestController
+public class RiderController implements  subscriber {
 	
 	
     IDBSrvc dbsrvc =new DBSrvc();
@@ -24,9 +34,10 @@ public class RiderController implements controller, subscriber {
      * @param account 
      * @return
      */
-    public void register(Account account) {
+    @PostMapping("/rider/register")
+    public int register(@RequestBody Account account) {
        rider.account=account;
-       dbsrvc.addaRider(rider);
+       return dbsrvc.addaRider(rider);
       
     }
 
@@ -34,15 +45,17 @@ public class RiderController implements controller, subscriber {
      * @param ride 
      * @return
      */
-    public void requestRide(Ride ride) {
+    @PostMapping("/rider/requestRide")
+    public int requestRide(@RequestBody Ride ride) {
     	rider.ride=ride;
     	rider.ride.requested=true;
-    	dbsrvc.addaRide(rider.ride);
+    	return dbsrvc.addaRide(rider.ride);
     }
 
     /**
      * @return
      */
+    @GetMapping("rider/offers")
     public ResultSet ListRideOffers() {
       return  dbsrvc.getallOffer();
     }
@@ -51,20 +64,24 @@ public class RiderController implements controller, subscriber {
      * @param driver 
      * @return
      */
-    public void viewDriverDetails(Driver driver) {
-      dbsrvc.getaDriver(driver.account.username);
+    @GetMapping("rider/driver/{driver}")
+    public ResultSet viewDriverDetails(@PathVariable Driver driver) {
+      return dbsrvc.getaDriver(driver.account.username);
       
     }
 
     /**
      * @param ride
      */
+    @GetMapping("rider/rides")
     public ResultSet listridehistory() {
     	return dbsrvc.getallRide();
     }
-    public void rateRide(Ride ride,int rate) {
+    
+    @PutMapping("/rider/rateRide")
+    public int rateRide(@RequestBody Ride ride,@RequestBody int rate) {
     ride.rate=rate;
-    dbsrvc.UpdateaRide(ride.id, ride);
+    return dbsrvc.UpdateaRide(ride.id, ride);
     	
     }
 
@@ -72,11 +89,14 @@ public class RiderController implements controller, subscriber {
      * @param Ride r 
      * @return
      */
+    @GetMapping("rider/offernotifications")
     public ResultSet update1() {
 		return dbsrvc.getalloffernotification();
         
     }
-    @Override
+    
+    /*@Override
+    @GetMapping("acceptedoffernotifications")
 	public ResultSet update2() {
     	return dbsrvc.getallacceptedoffernotification();
 		
@@ -86,14 +106,22 @@ public class RiderController implements controller, subscriber {
      * @param rideoffer 
      * @return
      */
+    @PutMapping("rider/acceptPrice")
     public boolean acceptPrice(Driver d) {
        d.offer.accepted=true;
        dbsrvc.UpdateanOffer(d.offer.id, d.offer);
         return true;
     }
-    public void login(Account a) {
-    	dbsrvc.getaRider(a.username);
+    @GetMapping("rider/{a}")
+    public ResultSet login(@PathVariable Account a) {
+    	return dbsrvc.getaRider(a.username);
     }
+
+
+
+
+
+	
 
 	
 

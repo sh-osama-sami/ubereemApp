@@ -1,3 +1,5 @@
+package com.example.demo;
+
 
 import java.util.*;
 
@@ -10,26 +12,24 @@ public class harvsineWay implements Calculation{
      * Default constructor
      */
     public harvsineWay() {
-    	
-    	
-    	
+   
     	
     }
-static double haversine(double lat1, double lon1,double lat2, double lon2)
+public double calcDistance(Location l1,Location l2)
 {
 		// distance between latitudes and longitudes
-		double dLat = Math.toRadians(lat2 - lat1);
-		double dLon = Math.toRadians(lon2 - lon1);
+		double dLat = Math.toRadians(l2.lat - l1.lat);
+		double dLon = Math.toRadians(l2.lon - l1.lon);
 		
 		// convert to radians
-		lat1 = Math.toRadians(lat1);
-		lat2 = Math.toRadians(lat2);
+		l1.lat = Math.toRadians(l1.lat);
+		l2.lat = Math.toRadians(l2.lat);
 		
 		// apply formulae
 		double a = Math.pow(Math.sin(dLat / 2), 2) +
 		   Math.pow(Math.sin(dLon / 2), 2) *
-		   Math.cos(lat1) *
-		   Math.cos(lat2);
+		   Math.cos(l1.lat) *
+		   Math.cos(l2.lat);
 		double rad = 6371;
 		double c = 2 * Math.asin(Math.sqrt(a));
 		return rad * c;
@@ -39,18 +39,16 @@ static double haversine(double lat1, double lon1,double lat2, double lon2)
      * 
      */
    
-    public double ETA(String src,String dest) {
-		return 0;
-        // TODO implement here
+    public double ETA(Location src,Location dest) {
+        double eta =calcDistance(src, dest)/60;
+		return eta;
+       
     }
 
     /**
      * 
      */
-    public double calcDistance(String src,String dest) {
-		return 0;
-        // TODO implement here
-    }
+    
     
     
 

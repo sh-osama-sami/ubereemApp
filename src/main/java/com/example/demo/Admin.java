@@ -1,12 +1,20 @@
+package com.example.demo;
+
 
 import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  * 
  */
+@RestController
 public class Admin {
 
 	
@@ -26,7 +34,8 @@ public class Admin {
      * @return
      * @throws ParseException 
      */
-    public boolean verifyDriver(Driver d) throws ParseException {
+    @PostMapping("admin/verify")
+    public boolean verifyDriver(@RequestBody Driver d) throws ParseException {
     	SimpleDateFormat s= new SimpleDateFormat("dd/MM/yyyy");
     	Date limit = new Date();
     	limit =s.parse("01/01/2020");
@@ -40,7 +49,7 @@ public class Admin {
     	return true;
     	}
     	else { System.out.println("access denied");
-    	dbsrvc.addaDriver(d);
+    	dbsrvc.addpendingDriver(d);
     	return false;}
     	
       
@@ -49,6 +58,7 @@ public class Admin {
     /**
      * @return
      */
+    @GetMapping("admin/drivers")
     public ResultSet listPendingDrivers() {
        return dbsrvc.getallpendingDriver();
       

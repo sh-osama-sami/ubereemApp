@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import java.sql.ResultSet;
 
 public class DBSrvc implements IDBSrvc {

@@ -1,11 +1,21 @@
+package com.example.demo;
+
 
 import java.sql.ResultSet;
 import java.util.*;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  * 
  */
-public class DriverController implements controller, subscriber {
+@RestController
+public class DriverController implements  subscriber {
 	  Driver driver;
 	  IDBSrvc dbsrvc =new DBSrvc();
     /**
@@ -23,18 +33,20 @@ public class DriverController implements controller, subscriber {
      * @param license 
      * @return
      */
-    public void register(Account account, String ID, License license) {
+    @PostMapping("/driver/register")
+    public int register(@RequestBody Account account,@RequestBody String ID,@RequestBody License license) {
        driver.account=account;
        driver.license=license;
        driver.ID=ID;
-       dbsrvc.addpendingDriver(driver);
+      return dbsrvc.addpendingDriver(driver);
         
     }
 
     /**
      * @return
      */
-    public boolean endRide(Ride r) {
+    @PutMapping("driver/endride")
+    public boolean endRide(@RequestBody Ride r) {
       r.ended=true;
       driver.balance=r.cost;
      dbsrvc.UpdateaRide(r.id, r);
@@ -45,8 +57,9 @@ public class DriverController implements controller, subscriber {
      * @param ride 
      * @return
      */
-    public void addRideToHistory(Ride ride) {
-        dbsrvc.addaRide(ride);
+    @PostMapping("driver/addridetohistory")
+    public int addRideToHistory(@RequestBody Ride ride) {
+        return dbsrvc.addaRide(ride);
        
     }
 
@@ -54,9 +67,10 @@ public class DriverController implements controller, subscriber {
      * @param favearea 
      * @return
      */
-    public void addFavouriteArea(Area favearea) {
+    @PostMapping("driver/addFavouriteArea")
+    public int addFavouriteArea(@RequestBody Area favearea) {
     	favearea.favArea=true;
-       dbsrvc.addanArea(favearea);       
+      return dbsrvc.addanArea(favearea);       
     }
 
     /**
@@ -64,18 +78,22 @@ public class DriverController implements controller, subscriber {
      * @return 
      * @return
      */
+    @GetMapping("driver/ridenotifications")
     public ResultSet update1() {
      return dbsrvc.getallridenotification();
        
     }
-    public ResultSet update2() {
-        return dbsrvc.getalloffernotification();
+   
+    @GetMapping("driver/acceptedoffernotifications")
+    public ResultSet update1(@RequestBody String dummy) {
+        return dbsrvc.getallacceptedoffernotification();
           
        }
     /**
      * @param source 
      * @return
      */
+    @GetMapping("driver/faverides")
     public ResultSet listFavRides() {
     	return dbsrvc.getallfavRide();
         
@@ -85,17 +103,19 @@ public class DriverController implements controller, subscriber {
      * @param p 
      * @return
      */
-    public void suggestPrice(float p,int rideid) {
+    @PostMapping("driver/suggestprice")
+    public int suggestPrice(@RequestBody float p,@RequestBody int rideid) {
        driver.offer.price=p;
        driver.offer.id=rideid;
-       dbsrvc.addanOffer(driver.offer);
+       return dbsrvc.addanOffer(driver.offer);
         
     }
 
     /**
      * @return
      */
-    public boolean isFavRide(Ride r) {
+    @GetMapping("driver/isfavride/{r}")
+    public boolean isFavRide(@PathVariable Ride r) {
       //  ResultSet getallArea = dbsrvc.getallArea();
 		if(r.source.equals(dbsrvc.getanArea(r.source.areaName))) {
         	
@@ -107,16 +127,22 @@ public class DriverController implements controller, subscriber {
     /**
      * 
      */
-    public void setFavRides(Ride r) {
-    	if(isFavRide(r)) {
+    @PutMapping("driver/setfavrides")
+    public int setFavRides(@RequestBody Ride r) {
+    	
     	r.favRide=true;
-    	dbsrvc.UpdateaRide(r.id, r);	
-    	}
+    	return dbsrvc.UpdateaRide(r.id, r);	    	
     	
     }
-    public void login(Account a) {
-    	dbsrvc.getaDriver(a.username);
+    @GetMapping("driver/login/{a}")
+    public ResultSet login(@PathVariable Account a) {
+    	return dbsrvc.getaDriver(a.username);
     }
+
+
+
+
+	
 
     /**
      * @param Ride r 

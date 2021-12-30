@@ -1,10 +1,19 @@
+package com.example.demo;
+
 
 import java.util.*;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 
  */
-public class RideController implements publisher, controller {
+@RestController
+public class RideController implements publisher {
 
 	IDBSrvc dbsrvc =new DBSrvc();
   Notification notif = new Notification();
@@ -21,7 +30,8 @@ public class RideController implements publisher, controller {
      * @param Ride r 
      * @return
      */
-    public void notification1( Driver drvr,  Rider r) {///notify driver with fav ride
+    @PostMapping("/ride/notification1")
+    public void notification1(@RequestBody Driver drvr,@RequestBody  Rider r) {///notify driver with fav ride
     	notif.driverusername =drvr.account.username;
     	notif.rideid=r.ride.id;
     	notif.riderusername=r.account.username;
@@ -33,7 +43,8 @@ public class RideController implements publisher, controller {
      * @param Rider r 
      * @return
      */
-    public void notification2( Driver d ,Rider r) {///notify rider with offer
+    @PostMapping("/ride/notification2")
+    public void notification2(@RequestBody Driver d ,@RequestBody Rider r) {///notify rider with offer
     	notif.driverusername =d.account.username;
     	notif.offerid=d.offer.id;
     	notif.riderusername=r.account.username;
@@ -42,23 +53,26 @@ public class RideController implements publisher, controller {
     }
 
 	@Override
-	public void notification3(Driver d, Rider r) {/// notify driver with accepted offer
+	@PutMapping("/ride/notification3")
+	public void notification3(@RequestBody Driver d,@RequestBody Rider r) {/// notify driver with accepted offer
 	
 		notif.offeraccepted=d.offer.accepted;
 		//dbsrvc.UpdateanOffer(d.offer.id, d.offer);
 		dbsrvc.Updatenotification(d.offer.id, notif);
 	}
 
-	
+	@GetMapping("/ride/strategy")
     public Calculation getStrategy() {
     	
         return null;
     }
-    public double clacdist(String source,String destination) {
+	@GetMapping("/ride/distance")
+    public double clacdist(Location source,Location destination) {
     	ride.distance=distanceCalculatorsrvc.calcDistance(source,destination);
         return ride.distance;
     }
-    public double claceta(String source,String destination) {
+	@GetMapping("/ride/eta")
+    public double claceta(Location source,Location destination) {
     	ride.eta=distanceCalculatorsrvc.ETA(source,destination);
         return ride.eta;
     }
