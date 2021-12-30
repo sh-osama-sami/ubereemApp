@@ -11,6 +11,7 @@ public interface View {
     /**
      * 
      */
-    public void Operation1();
+    public void showMenu();
+    
 
 }

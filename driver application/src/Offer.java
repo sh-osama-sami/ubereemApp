@@ -30,17 +30,6 @@ public class Offer {
      * @param price 
      * @return
      */
-    public void setPrice(Float price) {
-        // TODO implement here
-        
-    }
-
-    /**
-     * @return
-     */
-    public Float getPrice() {
-        // TODO implement here
-        return null;
-    }
-
+    public void setPrice(Float p) {price =p;}
+    public Float getPrice() {return price;}
 }

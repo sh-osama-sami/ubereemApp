@@ -60,17 +60,18 @@ public class Ride  {
      * @param Sting s 
      * @param String d
      */
-    public void Ride( String s,  String d) {
-        // TODO implement here
+    public Ride(String s ,String d){
+    	source.areaName=s;
+    	dest.areaName=d;
     }
+
 
     /**
      * @param r 
      * @return
      */
     public void setRate(int r) {
-        // TODO implement here
-        
+       rate=r;
     }
 
     /**
@@ -78,18 +79,16 @@ public class Ride  {
      * @return
      */
     public void setCost(float c) {
-        // TODO implement here
-       
+       cost=c;
     }
+
 
     /**
      * @return
      */
     public float getCost() {
-        // TODO implement here
-        return 0.0f;
+        return cost;
     }
-
     /**
      * @param Driver d 
      * @param Ride r 

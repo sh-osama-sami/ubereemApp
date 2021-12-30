@@ -17,8 +17,13 @@ public class RiderView implements View {
     /**
      * 
      */
-    public void Operation1() {
-        // TODO implement here
-    }
+    
+
+
+	@Override
+	public void showMenu() {
+		
+		
+	}
 
 }

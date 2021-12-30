@@ -1,4 +1,6 @@
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -12,6 +14,13 @@ public class License {
     public License() {
     }
 
+    
+    public License(String ln,String ed) throws ParseException {
+    	SimpleDateFormat s= new SimpleDateFormat("dd/MM/yyyy");
+    	expirydate=s.parse(ed);
+    	licenseNumber=ln;
+    	
+    }
     /**
      * 
      */
@@ -28,34 +37,24 @@ public class License {
      * @param d 
      * @return
      */
+    public License(String ln) {
+    	licenseNumber=ln;
+    }
     public void setExpiryDate(Date d) {
-        // TODO implement here
-        
+    	expirydate=d;
+    	
     }
-
-    /**
-     * @param s 
-     * @return
-     */
-    public void setLicenseNumber(String s) {
-        // TODO implement here
-        
+    public void setLicenseNumber(String d) {
+    	licenseNumber=d;
+    	
     }
-
-    /**
-     * @return
-     */
     public Date getExpiryDate() {
-        // TODO implement here
-        return null;
+    	return expirydate;
+    	
     }
-
-    /**
-     * @return
-     */
     public String getLicenseNumber() {
-        // TODO implement here
-        return "";
+    	return licenseNumber;
+    	
     }
 
 }

@@ -20,10 +20,7 @@ public class ubreemSystem {
 
 
 
-    /**
-     * @param args[] 
-     * @return
-     */
+    
     public static void main(String args[]) {
         // TODO implement here
     	Database db=new DatabaseSQL();
