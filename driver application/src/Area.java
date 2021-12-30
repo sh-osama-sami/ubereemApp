@@ -20,7 +20,7 @@ public class Area {
     /**
      * 
      */
-    public boolean favArea;
+    public boolean favArea=false;
 
 
 
@@ -30,8 +30,8 @@ public class Area {
      * @param s 
      * @return
      */
-    public void setAreaName(String s) {
-        // TODO implement here
+    public String setAreaName(String s) {
+    	return areaName=s;
         
     }
 
@@ -39,8 +39,8 @@ public class Area {
      * @return
      */
     public String getAreaName() {
-        // TODO implement here
-        return "";
+     
+    	return areaName;
     }
 
 }

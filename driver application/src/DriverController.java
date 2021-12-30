@@ -1,11 +1,13 @@
 
+import java.sql.ResultSet;
 import java.util.*;
 
 /**
  * 
  */
 public class DriverController implements controller, subscriber {
-
+	  Driver driver;
+	  IDBSrvc dbsrvc =new DBSrvc();
     /**
      * Default constructor
      */
@@ -22,16 +24,21 @@ public class DriverController implements controller, subscriber {
      * @return
      */
     public void register(Account account, String ID, License license) {
-        // TODO implement here
+       driver.account=account;
+       driver.license=license;
+       driver.ID=ID;
+       dbsrvc.addpendingDriver(driver);
         
     }
 
     /**
      * @return
      */
-    public boolean endRide() {
-        // TODO implement here
-        return true;
+    public boolean endRide(Ride r) {
+      r.ended=true;
+      driver.balance=r.cost;
+     dbsrvc.UpdateaRide(r.id, r);
+     return r.ended;
     }
 
     /**
@@ -39,7 +46,7 @@ public class DriverController implements controller, subscriber {
      * @return
      */
     public void addRideToHistory(Ride ride) {
-        // TODO implement here
+        dbsrvc.addaRide(ride);
        
     }
 
@@ -48,50 +55,67 @@ public class DriverController implements controller, subscriber {
      * @return
      */
     public void addFavouriteArea(Area favearea) {
-        // TODO implement here
-       
+    	favearea.favArea=true;
+       dbsrvc.addanArea(favearea);       
     }
 
     /**
      * @param r 
+     * @return 
      * @return
      */
-    public void update(Ride r) {
-        // TODO implement here
+    public ResultSet update1() {
+     return dbsrvc.getallridenotification();
        
     }
-
+    public ResultSet update2() {
+        return dbsrvc.getalloffernotification();
+          
+       }
     /**
      * @param source 
      * @return
      */
-    public Ride listFavRides(Area source) {
-        // TODO implement here
-        return null;
+    public ResultSet listFavRides() {
+    	return dbsrvc.getallfavRide();
+        
     }
 
     /**
      * @param p 
      * @return
      */
-    public void suggestPrice(float p) {
-        // TODO implement here
+    public void suggestPrice(float p,int rideid) {
+       driver.offer.price=p;
+       driver.offer.id=rideid;
+       dbsrvc.addanOffer(driver.offer);
         
     }
 
     /**
      * @return
      */
-    public void isFavRide() {
-        // TODO implement here
+    public boolean isFavRide(Ride r) {
+      //  ResultSet getallArea = dbsrvc.getallArea();
+		if(r.source.equals(dbsrvc.getanArea(r.source.areaName))) {
+        	
+        	return true;
+        }else return false;
         
     }
 
     /**
      * 
      */
-    public void setFavRides() {
-        // TODO implement here
+    public void setFavRides(Ride r) {
+    	if(isFavRide(r)) {
+    	r.favRide=true;
+    	dbsrvc.UpdateaRide(r.id, r);	
+    	}
+    	
+    }
+    public void login(Account a) {
+    	dbsrvc.getaDriver(a.username);
     }
 
     /**

@@ -11,6 +11,12 @@ public class Account {
      */
     public Account() {
     }
+    
+    public Account(String s,String y ,String x) {
+    	username=s;
+    	phonenumber=y;
+    	password=x;
+    }
 
     /**
      * 
@@ -40,21 +46,21 @@ public class Account {
      * @param name
      */
     public void setUsername(String name) {
-        // TODO implement here
+    	 username=name;
     }
 
     /**
      * @param p
      */
     public void setPass(String p) {
-        // TODO implement here
+    	 password=p;
     }
 
     /**
      * @param e
      */
     public void setEmail(String e) {
-        // TODO implement here
+    	 email=e;
     }
 
     /**
@@ -62,8 +68,6 @@ public class Account {
      * @param String y 
      * @param String x
      */
-    public void Account( String s,  String y,  String x) {
-        // TODO implement here
-    }
+    
 
 }

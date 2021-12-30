@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
-
+///service///
 /**
  * 
  */
@@ -68,8 +68,9 @@ public class DatabaseSQL implements Database{
 	}
 	@Override
 	public int addaDriver(Driver d) {
+		d.verified=true;
 		java.sql.Connection conn = connect();
-        String sql = "INSERT INTO Driver (balance,username,phonenumber,password,email) " +"VALUES ('" +d.balance+ "'," +d.account.username+ ","+d.account.phonenumber +","+d.account.password+","+d.account.email+ ")";
+		 String sql = "INSERT INTO Driver (balance,username,phonenumber,password,email,verified) " +"VALUES ('" +d.balance+ "'," +d.account.username+ ","+d.account.phonenumber +","+d.account.password+","+d.account.email+","+d.verified+ ")";
         int res = 0;
         try
         {
@@ -139,7 +140,7 @@ public class DatabaseSQL implements Database{
 	@Override
 	public ResultSet getaDriver(String username) {
 		java.sql.Connection conn = connect();
-        String sql = "select* from  Driver where Rider.username =" +username   ;
+        String sql = "select* from  Driver where Driver.username =" +username   ;
         ResultSet res = null;
         
         try
@@ -316,7 +317,7 @@ public class DatabaseSQL implements Database{
 	@Override
 	public int UpdateanOffer(int id,Offer o) {
 		java.sql.Connection conn = connect();
-        String sql =  "UPDATE Offer SET price = '"+ o.price+ "',accepted="  +" WHERE id=" +id;
+        String sql =  "UPDATE Offer SET price = '"+ o.price+ "',accepted="+o.accepted  +" WHERE id=" +id;
         int res = 0;
         try
         {
@@ -355,16 +356,16 @@ public class DatabaseSQL implements Database{
 	
 	
 	
-	@Override
-	public int getRideNextId() {
-		// TODO Auto-generated method stub
+	
+/*	public int getRideNextId() {
+	
 		return 0;
-	}
-	@Override
-	public int getOfferNextId() {
-		// TODO Auto-generated method stub
+	}*/
+	
+	/*public int getOfferNextId() {
+	
 		return 0;
-	}
+	}*/
 /////////////////////////////////////////////////////////////////////
 	@Override
 	public ResultSet getallRider() {
@@ -384,7 +385,7 @@ public class DatabaseSQL implements Database{
 	@Override
 	public ResultSet getallDriver() {
 		 java.sql.Connection conn = connect();
-	        String sql = "select* from  Driver ; ";
+	        String sql = "select* from  Driver where driver.verified ="+true;
 	        ResultSet res = null ;
 	        try
 	        {
@@ -426,7 +427,262 @@ public class DatabaseSQL implements Database{
 	        }       return res;
 		
 	}
-
+	@Override
+	public int addpendingDriver(Driver d) {
+		d.verified=false;
+		java.sql.Connection conn = connect();
+        String sql = "INSERT INTO Driver (balance,username,phonenumber,password,email,verified) " +"VALUES ('" +d.balance+ "'," +d.account.username+ ","+d.account.phonenumber +","+d.account.password+","+d.account.email+","+d.verified+ ")";
+        int res = 0;
+        try
+        {
+            Statement stat = conn.createStatement();
+            res = stat.executeUpdate(sql);
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return res;
+	}
+	@Override
+	public ResultSet getpendingDriver(String username) {
+		java.sql.Connection conn = connect();
+        String sql = "select* from  Driver where Driver.username =" +username+ "where Driver.verified ="+false  ;
+        ResultSet res = null;
+        
+        try
+        {
+            Statement stat = conn.createStatement();
+            res = stat.executeQuery(sql);
+           
+              //  System.out.println(res.getString("Name"));
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return res;
+	}
+	
+	@Override
+	public ResultSet getallpendingDriver() {
+		java.sql.Connection conn = connect();
+        String sql = "select* from  Driver where Driver.verified ="+false;
+        ResultSet res = null ;
+        try
+        {
+            Statement stat = conn.createStatement();
+             res = stat.executeQuery(sql);
+          
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }       return res;
+	
+	}
+	@Override
+	public int addnotification(Notification r) {
+		java.sql.Connection conn = connect();
+        String sql = "INSERT INTO notifications (id,riderusername,rideid,driverusername,offerid) " +"VALUES ('" +r.id+ "'," +r.riderusername+","+r.rideid+","+r.driverusername+","+r.offerid+ ")";
+        int res = 0;
+        try
+        {
+            Statement stat = conn.createStatement();
+            res = stat.executeUpdate(sql);
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return res;
+	}
+	@Override
+	public ResultSet getnotification(int id) {
+		java.sql.Connection conn = connect();
+        String sql = "select* from  notification where notification.id =" +id   ;
+        ResultSet res = null;
+        
+        try
+        {
+            Statement stat = conn.createStatement();
+            res = stat.executeQuery(sql);
+           
+              //  System.out.println(res.getString("Name"));
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return res;
+		
+	}
+	@Override
+	public int deletenotification(int id) {
+		java.sql.Connection conn = connect();
+        String sql = "delete from  notification where notification.id =" +id;
+        int res = 0;
+        
+        try
+        {
+            Statement stat = conn.createStatement();
+            res = stat.executeUpdate(sql);
+           
+              //  System.out.println(res.getString("Name"));
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return res;
+	}
+	@Override
+	public ResultSet getallridenotification() {
+		java.sql.Connection conn = connect();
+        String sql = "select* from  notification where rideid != null";
+        ResultSet res = null ;
+        try
+        {
+            Statement stat = conn.createStatement();
+             res = stat.executeQuery(sql);
+          
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }       return res;
+	}
+	@Override
+	public int Updatenotification(int id, Notification r) {
+		java.sql.Connection conn = connect();
+        String sql =  "UPDATE notification SET id = '"+ r.id + "',riderusername=" + r.riderusername +",rideid=" + r.rideid+",driverusername=" + r.driverusername+",offerid=" + r.offerid+" WHERE r.id=" +id;
+        int res = 0;
+        try
+        {
+            Statement stat = conn.createStatement();
+             res = stat.executeUpdate(sql);
+            
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+		return res;
+	}
+	@Override
+	public ResultSet getalloffernotification() {
+		java.sql.Connection conn = connect();
+        String sql = "select* from  notification where offerid != null";
+        ResultSet res = null ;
+        try
+        {
+            Statement stat = conn.createStatement();
+             res = stat.executeQuery(sql);
+          
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }       return res;
+	}
+	public ResultSet getallacceptedoffernotification() {
+		java.sql.Connection conn = connect();
+        String sql = "select* from  notification where offerid != null and offeraccepted=true";
+        ResultSet res = null ;
+        try
+        {
+            Statement stat = conn.createStatement();
+             res = stat.executeQuery(sql);
+          
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }       return res;
+	}
+	@Override
+	public int addanArea(Area o) {
+		java.sql.Connection conn = connect();
+        String sql = "INSERT INTO area (areaname,fav) " +"VALUES ('" +o.areaName+ "'," +o.favArea+ ")";
+        int res = 0;
+        try
+        {
+            Statement stat = conn.createStatement();
+            res = stat.executeUpdate(sql);
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return res;
+	}
+	@Override
+	public ResultSet getanArea(String name) {
+		java.sql.Connection conn = connect();
+        String sql = "select* from  area where area.areaname =" +name   ;
+        ResultSet res = null;
+        
+        try
+        {
+            Statement stat = conn.createStatement();
+            res = stat.executeQuery(sql);
+           
+              //  System.out.println(res.getString("Name"));
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return res;
+	}
+	@Override
+	public int deleteanArea(String name) {
+		java.sql.Connection conn = connect();
+        String sql = "delete from  area where area.areaname =" +name;
+        int res = 0;
+        
+        try
+        {
+            Statement stat = conn.createStatement();
+            res = stat.executeUpdate(sql);
+           
+              //  System.out.println(res.getString("Name"));
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return res;
+	}
+	@Override
+	public ResultSet getallArea() {
+		 java.sql.Connection conn = connect();
+	        String sql = "select* from  area where area.fav ="+true;
+	        ResultSet res = null ;
+	        try
+	        {
+	            Statement stat = conn.createStatement();
+	             res = stat.executeQuery(sql);
+	          
+	        } catch (SQLException throwables) {
+	            throwables.printStackTrace();
+	        }       return res;
+		
+	}
+	@Override
+	public int UpdateanArea(String name, Area a) {
+		java.sql.Connection conn = connect();
+        String sql =  "UPDATE area SET fav= '"+ a.favArea +" WHERE areaname=" +a.areaName;
+        int res = 0;
+        try
+        {
+            Statement stat = conn.createStatement();
+             res = stat.executeUpdate(sql);
+            
+            
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+		return res;
+	}
+	@Override
+	public ResultSet getallfavRide() {
+		java.sql.Connection conn = connect();
+        String sql = "select* from  Ride where fav ="+true;
+        ResultSet res = null ;
+        try
+        {
+            Statement stat = conn.createStatement();
+             res = stat.executeQuery(sql);
+           
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }       return res;
+	}
+	
 	
 
 

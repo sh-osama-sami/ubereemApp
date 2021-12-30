@@ -1,4 +1,7 @@
 
+import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -6,10 +9,13 @@ import java.util.*;
  */
 public class Admin {
 
+	
+	IDBSrvc dbsrvc =new DBSrvc();
     /**
      * Default constructor
      */
     public Admin() {
+    	 
     }
 
 
@@ -18,34 +24,47 @@ public class Admin {
     /**
      * @param d 
      * @return
+     * @throws ParseException 
      */
-    public boolean verifyDriver(Driver d) {
-        // TODO implement here
-        return true;
+    public boolean verifyDriver(Driver d) throws ParseException {
+    	SimpleDateFormat s= new SimpleDateFormat("dd/MM/yyyy");
+    	Date limit = new Date();
+    	limit =s.parse("01/01/2020");
+    	
+    	if(d.license.getExpiryDate().after(limit))
+    	{
+    		
+    		d.verified=true;
+    		dbsrvc.addaDriver(d);
+    	System.out.println("verified");
+    	return true;
+    	}
+    	else { System.out.println("access denied");
+    	dbsrvc.addaDriver(d);
+    	return false;}
+    	
+      
     }
 
     /**
      * @return
      */
-    public void listPendingDrivers() {
-        // TODO implement here
+    public ResultSet listPendingDrivers() {
+       return dbsrvc.getallpendingDriver();
       
     }
 
     /**
      * @param Driver d
      */
-    public void addPendingDriver( Driver d) {
-        // TODO implement here
-    }
+   // public int addPendingDriver( Driver d) {
+  //    return dbsrvc.addpendingDriver(d);
+  //  }
 
     /**
      * @param args[] 
      * @return
      */
-    public void main(String args[]) {
-        // TODO implement here
-       
-    }
+   
 
 }

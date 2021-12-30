@@ -5,7 +5,7 @@ import java.util.*;
  * 
  */
 public class GoogleAPI implements Calculation {
-
+///service
     /**
      * Default constructor
      */
@@ -15,7 +15,8 @@ public class GoogleAPI implements Calculation {
     /**
      * 
      */
-    public void calcDistance() {
+    public double calcDistance(String src,String dest) {
+		return 0;
         // TODO implement here
     }
 
@@ -26,7 +27,8 @@ public class GoogleAPI implements Calculation {
     /**
      * 
      */
-    public void ETA() {
+    public double ETA(String src,String dest) {
+		return 0;
         // TODO implement here
     }
 

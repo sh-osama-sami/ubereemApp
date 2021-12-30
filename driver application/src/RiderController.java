@@ -1,14 +1,18 @@
 
+import java.sql.ResultSet;
 import java.util.*;
 
 /**
  * 
  */
 public class RiderController implements controller, subscriber {
-
-    /**
-     * Default constructor
-     */
+	
+	
+    IDBSrvc dbsrvc =new DBSrvc();
+   // Ride ride =new Ride();
+    Rider rider =new Rider();
+    
+    
     public RiderController() {
     }
 
@@ -21,7 +25,8 @@ public class RiderController implements controller, subscriber {
      * @return
      */
     public void register(Account account) {
-        // TODO implement here
+       rider.account=account;
+       dbsrvc.addaRider(rider);
       
     }
 
@@ -30,16 +35,16 @@ public class RiderController implements controller, subscriber {
      * @return
      */
     public void requestRide(Ride ride) {
-        // TODO implement here
-     
+    	rider.ride=ride;
+    	rider.ride.requested=true;
+    	dbsrvc.addaRide(rider.ride);
     }
 
     /**
      * @return
      */
-    public Ride ListRideOffers() {
-        // TODO implement here
-        return null;
+    public ResultSet ListRideOffers() {
+      return  dbsrvc.getallOffer();
     }
 
     /**
@@ -47,34 +52,50 @@ public class RiderController implements controller, subscriber {
      * @return
      */
     public void viewDriverDetails(Driver driver) {
-        // TODO implement here
+      dbsrvc.getaDriver(driver.account.username);
       
     }
 
     /**
      * @param ride
      */
-    public void rateRide(Ride ride) {
-        // TODO implement here
+    public ResultSet listridehistory() {
+    	return dbsrvc.getallRide();
+    }
+    public void rateRide(Ride ride,int rate) {
+    ride.rate=rate;
+    dbsrvc.UpdateaRide(ride.id, ride);
+    	
     }
 
     /**
      * @param Ride r 
      * @return
      */
-    public void update(Ride r) {
-        // TODO implement here
+    public ResultSet update1() {
+		return dbsrvc.getalloffernotification();
         
     }
+    @Override
+	public ResultSet update2() {
+    	return dbsrvc.getallacceptedoffernotification();
+		
+	}
 
     /**
      * @param rideoffer 
      * @return
      */
-    public boolean acceptPrice(Offer rideoffer) {
-        // TODO implement here
+    public boolean acceptPrice(Driver d) {
+       d.offer.accepted=true;
+       dbsrvc.UpdateanOffer(d.offer.id, d.offer);
         return true;
     }
+    public void login(Account a) {
+    	dbsrvc.getaRider(a.username);
+    }
+
+	
 
     /**
      * @param Ride r 

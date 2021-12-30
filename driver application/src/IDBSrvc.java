@@ -1,15 +1,7 @@
-
 import java.sql.ResultSet;
-import java.util.*;
-///iservice///
-/**
- * 
- */
-public interface Database {
-	
-	//public int getRideNextId();
-	//public int getOfferNextId();
-	
+
+public interface IDBSrvc {
+
 	public  int addaRider(Rider r) ;
     public  int addaDriver(Driver d) ;
     public  int addpendingDriver(Driver d) ;
@@ -55,6 +47,4 @@ public interface Database {
 	public int UpdateanArea(String name , Area a) ;
 	public int UpdateaRider(String username,Rider r);
 	public int Updatenotification(int id,Notification r);
-
-
 }

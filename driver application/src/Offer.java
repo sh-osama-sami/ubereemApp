@@ -20,7 +20,7 @@ public class Offer {
     /**
      * 
      */
-    public boolean accepted;
+    public boolean accepted=false;
     public int id;
 
 

@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Rider implements subscriber {
+public class Rider  {
 
     /**
      * Default constructor
@@ -16,7 +16,7 @@ public class Rider implements subscriber {
      * 
      */
     public Account account;
-
+    public Ride ride;
 
 
 
@@ -36,7 +36,6 @@ public class Rider implements subscriber {
      * @param Ride r 
      * @return
      */
-    public  void update( Ride r) {
-	}
+   
 
 }

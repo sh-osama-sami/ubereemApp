@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Ride implements publisher {
+public class Ride  {
 
     /**
      * Default constructor
@@ -43,8 +43,9 @@ public class Ride implements publisher {
     public float cost;
 
     public int id;
-
-
+    public boolean ended = false;
+    double distance;
+    double eta;
 
 
 
@@ -94,16 +95,6 @@ public class Ride implements publisher {
      * @param Ride r 
      * @return
      */
-    public  void notification( Driver d,  Ride r) {
-	}
-
-    /**
-     * @param Rider r 
-     * @return
-     */
-    public void notification( Rider r) {
-        // TODO implement here
-       
-    }
+   
 
 }

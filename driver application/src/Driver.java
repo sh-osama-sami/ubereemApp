@@ -1,10 +1,11 @@
 
+import java.sql.ResultSet;
 import java.util.*;
 
 /**
  * 
  */
-public class Driver implements subscriber {
+public class Driver {
 
     /**
      * Default constructor
@@ -15,6 +16,7 @@ public class Driver implements subscriber {
     /**
      * 
      */
+    public Offer offer;
     public String ID;
 
     /**
@@ -35,7 +37,7 @@ public class Driver implements subscriber {
     /**
      * 
      */
-    public boolean verified;
+    public boolean verified=false;
 
 
 
@@ -62,7 +64,7 @@ public class Driver implements subscriber {
      * @return
      */
     public void setID(String id) {
-        // TODO implement here
+       
         
     }
 
@@ -146,10 +148,7 @@ public class Driver implements subscriber {
      * @param Ride r 
      * @return
      */
-    public  void update( Ride r) {
-    	
-    	
-    }
+   
 
 
 

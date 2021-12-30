@@ -11,11 +11,11 @@ public interface Calculation {
     /**
      * 
      */
-    public void ETA();
+    public double ETA(String src,String dest);
 
     /**
      * 
      */
-    public void calcDistance();
+    public double calcDistance(String src,String dest);
 
 }
