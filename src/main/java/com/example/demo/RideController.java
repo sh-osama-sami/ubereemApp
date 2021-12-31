@@ -35,7 +35,7 @@ public class RideController implements publisher {
     	notif.driverusername =drvr.account.username;
     	notif.rideid=r.ride.id;
     	notif.riderusername=r.account.username;
-        dbsrvc.addnotification(notif);
+        dbsrvc.addridenotification(notif);
         
     }
 
@@ -48,17 +48,17 @@ public class RideController implements publisher {
     	notif.driverusername =d.account.username;
     	notif.offerid=d.offer.id;
     	notif.riderusername=r.account.username;
-        dbsrvc.addnotification(notif);
+        dbsrvc.addoffernotification(notif);
        
     }
 
 	@Override
 	@PutMapping("/ride/notification3")
 	public void notification3(@RequestBody Driver d,@RequestBody Rider r) {/// notify driver with accepted offer
-	
+		d.offer.accepted=true;
 		notif.offeraccepted=d.offer.accepted;
 		//dbsrvc.UpdateanOffer(d.offer.id, d.offer);
-		dbsrvc.Updatenotification(d.offer.id, notif);
+		dbsrvc.addacceptednotification( notif);
 	}
 
 	@GetMapping("/ride/strategy")

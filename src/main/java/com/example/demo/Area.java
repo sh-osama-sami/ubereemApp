@@ -22,6 +22,7 @@ public class Area {
     /**
      * 
      */
+    public int id;
     public boolean favArea=false;
 
 

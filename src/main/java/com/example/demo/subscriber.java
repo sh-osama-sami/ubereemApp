@@ -16,7 +16,7 @@ public interface subscriber {
      * @param Ride r 
      * @return
      */
-    public abstract ResultSet update1();///update driver with fave rides
+    public abstract List<Notification> update1();///update driver with fave rides
    // public abstract ResultSet update2();
 
 }

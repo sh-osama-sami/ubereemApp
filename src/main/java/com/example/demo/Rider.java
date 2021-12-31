@@ -17,6 +17,7 @@ public class Rider  {
     /**
      * 
      */
+    public int id;
     public Account account;
     public Ride ride;
 

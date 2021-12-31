@@ -56,7 +56,7 @@ public class RiderController implements  subscriber {
      * @return
      */
     @GetMapping("rider/offers")
-    public ResultSet ListRideOffers() {
+    public List<Offer> ListRideOffers() {
       return  dbsrvc.getallOffer();
     }
 
@@ -65,7 +65,7 @@ public class RiderController implements  subscriber {
      * @return
      */
     @GetMapping("rider/driver/{driver}")
-    public ResultSet viewDriverDetails(@PathVariable Driver driver) {
+    public Driver viewDriverDetails(@PathVariable Driver driver) {
       return dbsrvc.getaDriver(driver.account.username);
       
     }
@@ -74,7 +74,7 @@ public class RiderController implements  subscriber {
      * @param ride
      */
     @GetMapping("rider/rides")
-    public ResultSet listridehistory() {
+    public List<Ride> listridehistory() {
     	return dbsrvc.getallRide();
     }
     
@@ -90,7 +90,7 @@ public class RiderController implements  subscriber {
      * @return
      */
     @GetMapping("rider/offernotifications")
-    public ResultSet update1() {
+    public List<Notification> update1() {
 		return dbsrvc.getalloffernotification();
         
     }
@@ -113,7 +113,7 @@ public class RiderController implements  subscriber {
         return true;
     }
     @GetMapping("rider/{a}")
-    public ResultSet login(@PathVariable Account a) {
+    public Rider login(@PathVariable Account a) {
     	return dbsrvc.getaRider(a.username);
     }
 

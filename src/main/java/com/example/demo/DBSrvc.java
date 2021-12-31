@@ -1,9 +1,10 @@
 package com.example.demo;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 public class DBSrvc implements IDBSrvc {
-	Database db =new DatabaseSQL();
+	Database db =new DatabaseArraylist();
 	@Override
 	public int addaRider(Rider r) {
 		return db.addaRider(r);
@@ -36,128 +37,128 @@ public class DBSrvc implements IDBSrvc {
 	}
 
 	@Override
-	public int addnotification(Notification r) {
-		return db.addnotification(r);
+	public int addridenotification(Notification r) {
+		return db.addridenotification(r);
 	}
 
 	@Override
-	public ResultSet getaRider(String username) {
+	public Rider getaRider(String username) {
 		return db.getaRider(username);
 	}
 
 	@Override
-	public ResultSet getaDriver(String username) {
+	public Driver getaDriver(String username) {
 		return db.getaDriver(username);
 	}
 
 	@Override
-	public ResultSet getpendingDriver(String username) {
-		return db.getpendingDriver(username);
+	public Driver getpendingDriver(int id) {
+		return db.getpendingDriver(id);
 	}
 
 	@Override
-	public ResultSet getanOffer(int id) {
+	public Offer getanOffer(int id) {
 		return db.getanOffer(id);
 	}
 
 	@Override
-	public ResultSet getanArea(String name) {
-		return db.getanArea(name);
+	public Area getanArea(int id) {
+		return db.getanArea(id);
 	}
 
 	@Override
-	public ResultSet getaRide(int id) {
+	public Ride getaRide(int id) {
 		return db.getaRide(id);
 	}
 
 	@Override
-	public ResultSet getnotification(int id) {
-		return db.getnotification(id);
+	public Notification getridenotification(int id) {
+		return db.getridenotification(id);
 	}
 
 	@Override
-	public int deleteaRider(String username) {
-		return db.deleteaRider(username);
+	public boolean deleteaRider(int id) {
+		return db.deleteaRider(id);
 	}
 
 	@Override
-	public int deleteaDriver(String username) {
-		return db.deleteaDriver(username);
+	public boolean deleteaDriver(int id) {
+		return db.deleteaDriver(id);
 	}
 
 	@Override
-	public int deleteanOffer(int id) {
+	public boolean deleteanOffer(int id) {
 		return db.deleteanOffer(id);
 	}
 
 	@Override
-	public int deleteanArea(String name) {
-		return db.deleteanArea(name);
+	public boolean deleteanArea(int id) {
+		return db.deleteanArea(id);
 	}
 
 	@Override
-	public int deleteaRide(int id) {
+	public boolean deleteaRide(int id) {
 		return db.deleteaRide(id);
 	}
 
 	@Override
-	public int deletenotification(int id) {
-		return 0;
+	public boolean deleteridenotification(int id) {
+		return db.deleteridenotification(id);
 	}
 
 	@Override
-	public ResultSet getallRider() {
+	public List<Rider> getallRider() {
 		return db.getallRider();
 	}
 
 	@Override
-	public ResultSet getallDriver() {
+	public List<Driver> getallDriver() {
 		return db.getallDriver();
 	}
 
 	@Override
-	public ResultSet getallpendingDriver() {
+	public List<Driver> getallpendingDriver() {
 		return db.getallpendingDriver();
 	}
 
 	@Override
-	public ResultSet getallOffer() {
+	public List<Offer> getallOffer() {
 		return db.getallOffer();
 	}
 
 	@Override
-	public ResultSet getallRide() {
+	public List<Ride> getallRide() {
 		return db.getallRide();
 	}
 
 	@Override
-	public ResultSet getallfavRide() {
+	public List<Ride> getallfavRide() {
 		return db.getallfavRide();
 	}
 
 	@Override
-	public ResultSet getallArea() {
+	public List<Area> getallArea() {
 		return db.getallArea();
 	}
 
 	@Override
-	public ResultSet getallridenotification() {
+	public List<Notification> getallridenotification() {
 		return db.getallridenotification();
 	}
 
 	@Override
-	public ResultSet getalloffernotification() {
+	public List<Notification> getalloffernotification() {
 		return db.getalloffernotification();
 	}
 
 	@Override
-	public ResultSet getallacceptedoffernotification() {
+	public List<Notification> getallacceptedoffernotification() {
 		return db.getallacceptedoffernotification();
 	}
 
 	@Override
-	public int UpdateaDriver(String username, Driver d) {
-		return db.UpdateaDriver(username,d);
+	public int UpdateaDriver(int id, Driver d) {
+		return db.UpdateaDriver(id,d);
 	}
 
 	@Override
@@ -171,18 +172,63 @@ public class DBSrvc implements IDBSrvc {
 	}
 
 	@Override
-	public int UpdateanArea(String name, Area a) {
-		return db.UpdateanArea(name,a);
+	public int UpdateanArea(int id, Area a) {
+		return db.UpdateanArea(id,a);
 	}
 
 	@Override
-	public int UpdateaRider(String username, Rider r) {
-		return db.UpdateaRider(username,r);
+	public int UpdateaRider(int id, Rider r) {
+		return db.UpdateaRider(id,r);
 	}
 
 	@Override
-	public int Updatenotification(int id, Notification r) {
-		return db.Updatenotification(id,r);
+	public int Updateridenotification(int id, Notification r) {
+		return db.Updateridenotification(id,r);
+	}
+
+	@Override
+	public int addoffernotification(Notification r) {
+		return db.addoffernotification(r);
+	}
+
+	@Override
+	public int addacceptednotification(Notification r) {
+		return db.addacceptednotification(r);
+	}
+
+	@Override
+	public Notification getoffernotification(int id) {
+		return db.getoffernotification(id);
+	}
+
+	@Override
+	public Notification getacceptednotification(int id) {
+		return db.getacceptednotification(id);
+	}
+
+	@Override
+	public boolean deleteoffernotification(int id) {
+		return db.deleteoffernotification(id);
+	}
+
+	@Override
+	public boolean deleteacceptednotification(int id) {
+		return db.deleteacceptednotification(id);
+	}
+
+	@Override
+	public int Updateoffernotification(int id, Notification r) {
+		return db.Updateoffernotification(id, r);
+	}
+
+	@Override
+	public int Updateacceptednotification(int id, Notification r) {
+		return db.Updateacceptednotification(id, r);
+	}
+
+	@Override
+	public int addfavRide(Ride r) {
+		return db.addfavRide(r);
 	}
 
 	

@@ -59,7 +59,7 @@ public class Admin {
      * @return
      */
     @GetMapping("admin/drivers")
-    public ResultSet listPendingDrivers() {
+    public List<Driver> listPendingDrivers() {
        return dbsrvc.getallpendingDriver();
       
     }

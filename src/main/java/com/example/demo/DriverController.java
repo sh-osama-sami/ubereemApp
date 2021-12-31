@@ -37,7 +37,7 @@ public class DriverController implements  subscriber {
     public int register(@RequestBody Account account,@RequestBody String ID,@RequestBody License license) {
        driver.account=account;
        driver.license=license;
-       driver.ID=ID;
+       driver.nationalID=ID;
       return dbsrvc.addpendingDriver(driver);
         
     }
@@ -78,14 +78,14 @@ public class DriverController implements  subscriber {
      * @return 
      * @return
      */
-    @GetMapping("driver/ridenotifications")
-    public ResultSet update1() {
+    @GetMapping("/driver/ridenotifications")
+    public List<Notification> update1() {
      return dbsrvc.getallridenotification();
        
     }
    
     @GetMapping("driver/acceptedoffernotifications")
-    public ResultSet update1(@RequestBody String dummy) {
+    public List<Notification> update1(@RequestBody String dummy) {
         return dbsrvc.getallacceptedoffernotification();
           
        }
@@ -94,7 +94,7 @@ public class DriverController implements  subscriber {
      * @return
      */
     @GetMapping("driver/faverides")
-    public ResultSet listFavRides() {
+    public List<Ride> listFavRides() {
     	return dbsrvc.getallfavRide();
         
     }
@@ -114,7 +114,7 @@ public class DriverController implements  subscriber {
     /**
      * @return
      */
-    @GetMapping("driver/isfavride/{r}")
+   /* @GetMapping("driver/isfavride/{r}")
     public boolean isFavRide(@PathVariable Ride r) {
       //  ResultSet getallArea = dbsrvc.getallArea();
 		if(r.source.equals(dbsrvc.getanArea(r.source.areaName))) {
@@ -122,7 +122,7 @@ public class DriverController implements  subscriber {
         	return true;
         }else return false;
         
-    }
+    }*/
 
     /**
      * 
@@ -131,12 +131,13 @@ public class DriverController implements  subscriber {
     public int setFavRides(@RequestBody Ride r) {
     	
     	r.favRide=true;
-    	return dbsrvc.UpdateaRide(r.id, r);	    	
+    	//dbsrvc.UpdateaRide(r.id, r);	
+    	return  dbsrvc.addfavRide(r);   	
     	
     }
     @GetMapping("driver/login/{a}")
-    public ResultSet login(@PathVariable Account a) {
-    	return dbsrvc.getaDriver(a.username);
+    public Driver login(@PathVariable String a) {
+    	return dbsrvc.getaDriver(a);
     }
 
 

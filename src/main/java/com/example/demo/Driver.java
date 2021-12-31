@@ -19,7 +19,8 @@ public class Driver {
      * 
      */
     public Offer offer;
-    public String ID;
+    public String nationalID;
+    public int ID;
 
     /**
      * 
