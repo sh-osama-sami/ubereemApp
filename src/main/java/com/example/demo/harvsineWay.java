@@ -15,7 +15,7 @@ public class harvsineWay implements Calculation{
    
     	
     }
-public double calcDistance(Location l1,Location l2)
+public String calcDistanceandETA(Location l1,Location l2)
 {
 		// distance between latitudes and longitudes
 		double dLat = Math.toRadians(l2.lat - l1.lat);
@@ -32,18 +32,20 @@ public double calcDistance(Location l1,Location l2)
 		   Math.cos(l2.lat);
 		double rad = 6371;
 		double c = 2 * Math.asin(Math.sqrt(a));
-		return rad * c;
+		double res =rad * c/60;
+		String r=""+res+"";
+		return r;
 }
 
     /**
      * 
      */
    
-    public double ETA(Location src,Location dest) {
+    /*public double ETA(Location src,Location dest) {
         double eta =calcDistance(src, dest)/60;
 		return eta;
        
-    }
+    }*/
 
     /**
      * 

@@ -1,6 +1,11 @@
 package com.example.demo;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
 /**
  * 
@@ -19,7 +27,7 @@ public class RideController implements publisher {
   Notification notif = new Notification();
   Ride ride;
   Calculation distanceCalculatorsrvc = getStrategy();//srvc
-
+  static int numofcalls=0;
     public RideController() {
     }
 
@@ -64,18 +72,19 @@ public class RideController implements publisher {
 	@GetMapping("/ride/strategy")
     public Calculation getStrategy() {
     	
-        return null;
+		if(numofcalls<500) {
+			 return new harvsineWay();
+		}
+        return new GoogleAPI();
     }
 	@GetMapping("/ride/distance")
-    public double clacdist(Location source,Location destination) {
-    	ride.distance=distanceCalculatorsrvc.calcDistance(source,destination);
-        return ride.distance;
+    public String clacdistandETA(@RequestBody Location source ,@RequestBody Location destination) throws IOException {
+		numofcalls++;
+    return	ride.distance=distanceCalculatorsrvc.calcDistanceandETA(source,destination);
+		
+	
     }
-	@GetMapping("/ride/eta")
-    public double claceta(Location source,Location destination) {
-    	ride.eta=distanceCalculatorsrvc.ETA(source,destination);
-        return ride.eta;
-    }
+	
 
 	
     /**

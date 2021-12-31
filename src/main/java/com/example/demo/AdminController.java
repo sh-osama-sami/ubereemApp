@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
  * 
  */
 @RestController
-public class Admin {
+public class AdminController {
 
 	
 	IDBSrvc dbsrvc =new DBSrvc();
     /**
      * Default constructor
      */
-    public Admin() {
+    public AdminController() {
     	 
     }
 

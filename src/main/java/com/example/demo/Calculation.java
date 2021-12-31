@@ -1,6 +1,7 @@
 package com.example.demo;
 
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -11,10 +12,11 @@ public interface Calculation {
 
 
     /**
+     * @throws IOException 
      * 
      */
-    public double calcDistance(Location src,Location dest);
-    public double ETA(Location src,Location dest);
+    public String calcDistanceandETA(Location src,Location dest) throws IOException;
+    
 
     /**
      * 

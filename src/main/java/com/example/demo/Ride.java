@@ -46,7 +46,7 @@ public class Ride  {
 
     public int id;
     public boolean ended = false;
-    double distance;
+    String distance;
     double eta;
 
 
