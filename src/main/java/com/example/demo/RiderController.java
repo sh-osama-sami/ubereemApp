@@ -79,9 +79,9 @@ public class RiderController implements  subscriber {
     }
     
     @PutMapping("/rider/rateRide")
-    public int rateRide(@RequestBody Ride ride,@RequestBody int rate) {
-    ride.rate=rate;
-    return dbsrvc.UpdateaRide(ride.id, ride);
+    public int rateRide(@RequestBody int rate) {
+    rider.ride.rate=rate;
+    return dbsrvc.UpdateaRide(rider.ride.id, rider.ride);
     	
     }
 
